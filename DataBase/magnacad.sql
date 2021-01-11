@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Creato il: Dic 21, 2020 alle 10:26
+-- Creato il: Gen 11, 2021 alle 18:05
 -- Versione del server: 10.4.10-MariaDB
 -- Versione PHP: 7.3.12
 
@@ -34,9 +34,27 @@ CREATE TABLE IF NOT EXISTS `carrello` (
   `id_prodotto` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_prodotto` (`id_prodotto`),
-  UNIQUE KEY `id_user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+  KEY `id_prodotto` (`id_prodotto`) USING BTREE,
+  KEY `id_user` (`id_user`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `carrello`
+--
+
+INSERT INTO `carrello` (`id`, `id_prodotto`, `id_user`) VALUES
+(1, 1, 3),
+(2, 8, 3),
+(3, 14, 3),
+(4, 19, 1),
+(5, 20, 1),
+(6, 18, 1),
+(7, 17, 1),
+(8, 9, 2),
+(9, 7, 2),
+(10, 6, 2),
+(11, 15, 4),
+(12, 16, 4);
 
 -- --------------------------------------------------------
 
@@ -49,7 +67,28 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `categoria`
+--
+
+INSERT INTO `categoria` (`id`, `nome`) VALUES
+(1, 'Bevande Alcoliche'),
+(2, 'Bevande Analcoliche'),
+(3, 'Biscotti e Brioche'),
+(4, 'Caramelle'),
+(5, 'Cioccolata'),
+(6, 'Cura Personale'),
+(7, 'Latticini'),
+(8, 'Marmellate e Creme'),
+(9, 'Pasta'),
+(10, 'Per Neonati e Bambini'),
+(11, 'Prodotti per la casa'),
+(12, 'Salse'),
+(13, 'Snacks'),
+(14, 'Sughi e Cibo in Scatola'),
+(15, 'Lieviti e altro per preparazioni');
 
 -- --------------------------------------------------------
 
@@ -71,7 +110,17 @@ CREATE TABLE IF NOT EXISTS `dettagli_nutrizionali` (
   `sodio` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_prodotto` (`id_prodotto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `dettagli_nutrizionali`
+--
+
+INSERT INTO `dettagli_nutrizionali` (`id`, `id_prodotto`, `energia`, `grassi`, `carboidrati`, `proteine`, `sale`, `anidrite_carbonica`, `calcio`, `sodio`) VALUES
+(1, 1, '10', '2', '0', '5', '1', NULL, NULL, NULL),
+(2, 8, '20', '5', '22', '18', '3', NULL, NULL, NULL),
+(3, 17, '10', '4', '1', '8', NULL, NULL, NULL, NULL),
+(4, 14, '5', '55', NULL, '12', '2', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -84,7 +133,16 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `denominazione` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `groups`
+--
+
+INSERT INTO `groups` (`id`, `denominazione`) VALUES
+(1, 'Amministratore'),
+(2, 'Utente semplice'),
+(3, 'Venditore');
 
 -- --------------------------------------------------------
 
@@ -96,7 +154,7 @@ DROP TABLE IF EXISTS `immagine`;
 CREATE TABLE IF NOT EXISTS `immagine` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_prodotto` int(11) NOT NULL,
-  `url` varchar(100) NOT NULL,
+  `url` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_prodotto` (`id_prodotto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
@@ -155,9 +213,27 @@ CREATE TABLE IF NOT EXISTS `lotto` (
   `id_prodotto` int(11) NOT NULL,
   `id_stabilimento` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_prodotto` (`id_prodotto`,`id_stabilimento`),
-  KEY `id_stabilimento` (`id_stabilimento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+  KEY `id_stabilimento` (`id_stabilimento`),
+  KEY `id_prodotto` (`id_prodotto`,`id_stabilimento`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `lotto`
+--
+
+INSERT INTO `lotto` (`id`, `numero`, `quantita_disponibile`, `scadenza`, `id_prodotto`, `id_stabilimento`) VALUES
+(1, '1021502150520', 2, '2021-03-31', 1, 1),
+(2, '606588401', 10, '2021-03-31', 6, 1),
+(3, '01010058552', 6, '2021-03-31', 7, 1),
+(4, '56205482020', 4, '2021-03-31', 8, 2),
+(5, '0152841650165', 3, '2021-03-31', 9, 5),
+(6, '63256949', 6, '2021-03-31', 14, 6),
+(7, '6952697', 8, '2021-03-31', 15, 6),
+(8, '26321568', 3, '2021-03-31', 16, 6),
+(9, '6255848', 7, '2021-03-31', 17, 6),
+(10, '256288', 10, '2021-03-31', 18, 7),
+(11, '5520558', 6, '2021-03-31', 19, 7),
+(12, '8746595', 3, '2021-03-31', 20, 7);
 
 -- --------------------------------------------------------
 
@@ -213,8 +289,8 @@ CREATE TABLE IF NOT EXISTS `ordine` (
   `id_user` int(11) NOT NULL,
   `id_carrello` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_user` (`id_user`,`id_carrello`),
-  KEY `id_carrello` (`id_carrello`)
+  KEY `id_carrello` (`id_carrello`),
+  KEY `id_user` (`id_user`,`id_carrello`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
 -- --------------------------------------------------------
@@ -226,15 +302,34 @@ CREATE TABLE IF NOT EXISTS `ordine` (
 DROP TABLE IF EXISTS `prodotto`;
 CREATE TABLE IF NOT EXISTS `prodotto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
   `prezzo` double NOT NULL,
   `sconto` int(11) DEFAULT NULL,
   `categoria` int(11) NOT NULL,
   `descrizione` varchar(1000) NOT NULL,
   `id_produttore` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `categoria` (`categoria`,`id_produttore`),
-  KEY `id_produttore` (`id_produttore`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+  KEY `id_produttore` (`id_produttore`),
+  KEY `categoria` (`categoria`,`id_produttore`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `prodotto`
+--
+
+INSERT INTO `prodotto` (`id`, `nome`, `prezzo`, `sconto`, `categoria`, `descrizione`, `id_produttore`) VALUES
+(1, 'Baiocchi', 2.5, NULL, 3, 'Fragranti biscotti di pastafrolla racchiudono una morbida farcitura di nocciole e cacao. Classica confezione dei biscotti Mulino Bianco o monoporzioni da portare sempre con te. Solo Nocciole italiane. Fragrante Pasta Frolla. Disponibili monoporzioni. Perfetti a colazione.', 1),
+(6, 'Plumcake con cioccolato', 3, NULL, 3, 'Plumcake classico con gocce di cioccolato. Mordidezza e semplicità. Senza olio di palma, senza additivi conservanti e senza grassi idrogenati. Senza Olio di Palma. No Additivi Conservanti. Senza Ingredienti OGM. Senza Additivi Coloranti. Senza Grassi Idrogenati.', 1),
+(7, 'Plumcake classico', 3, NULL, 3, 'Plumcake classico.Mordidezza e semplicità. Senza olio di palma, senza additivi conservanti e senza grassi idrogenati. Senza Olio di Palma. No Additivi Conservanti. Senza Ingredienti OGM. Senza Additivi Coloranti. Senza Grassi Idrogenati.', 1),
+(8, 'Fusilli', 1, NULL, 9, 'numero 34. ', 2),
+(9, 'Pennettine', 1, NULL, 9, 'numero 42.', 2),
+(14, 'Nutella', 4, NULL, 8, 'Crema di nocciole e cacao', 3),
+(15, 'Pocket Coffee', 2.5, NULL, 5, 'Delizioso cioccolatino ripieno al caffè.', 3),
+(16, 'Tronky', 1.5, NULL, 13, 'Snack con cacao e cuore di nocciola intera', 3),
+(17, 'Kinder Cereali', 1, NULL, 13, 'Barretta con cacao a latte e cereali', 3),
+(18, 'Lievito per dolci', 3.5, NULL, 15, 'Bustine da 16g di lievito vanigliato per la preparazione di dolci.', 4),
+(19, 'Lievito di birra secco', 4, NULL, 15, 'Lievito di birra secco (16g), ideale per la preparazione di salati', 4),
+(20, 'Lievito istantaneo', 3.5, NULL, 15, 'Lievito istantaneo (16g) ideale per qualsiasi preparazione senza tempo di lievitazione', 4);
 
 -- --------------------------------------------------------
 
@@ -269,7 +364,17 @@ CREATE TABLE IF NOT EXISTS `produttore` (
   `email` varchar(100) NOT NULL,
   `sito` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `produttore`
+--
+
+INSERT INTO `produttore` (`id`, `ragione_sociale`, `partita_iva`, `prefisso`, `numero_verde`, `email`, `sito`) VALUES
+(1, 'Mulino Bianco', '01654010345', NULL, 800862323, 'mulinobianco@info.it', 'mulinobianco.it'),
+(2, 'De Cecco', '00628450694', NULL, 800861106, 'servizioclienti@dececco.it', 'dececco.com'),
+(3, 'Ferrero spa', '03629090048', NULL, 800909690, 'ferrero@info.it', 'ferrero.com'),
+(4, 'Paneangeli', '00638480988', NULL, 800211292, 'paneangeli@info.it', 'paneangeli.it');
 
 -- --------------------------------------------------------
 
@@ -288,7 +393,17 @@ CREATE TABLE IF NOT EXISTS `recensione` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_user` (`id_user`,`id_prodotto`),
   KEY `id_prodotto` (`id_prodotto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `recensione`
+--
+
+INSERT INTO `recensione` (`id`, `id_user`, `id_prodotto`, `titolo`, `voto`, `testo`) VALUES
+(1, 3, 1, 'Ottimi', 5, 'Mi piacciono molto, hanno un sapore fantastico'),
+(2, 1, 18, 'Eccezionale', 5, 'Lievito davvero fantastico, il migliore che ci sia. Ottimo per preparare qualsiasi dolce.'),
+(3, 2, 6, 'Buonissimi', 5, 'Migliori in commercio, sapore davvero unico.'),
+(4, 4, 16, 'Buoni', 5, 'Buoni durante una pausa lavorativa durante la giornata, dolcezza giusta.');
 
 -- --------------------------------------------------------
 
@@ -335,8 +450,19 @@ CREATE TABLE IF NOT EXISTS `stabilimento` (
   `provincia` varchar(100) NOT NULL,
   `paese` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_produttore` (`id_produttore`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+  KEY `id_produttore` (`id_produttore`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `stabilimento`
+--
+
+INSERT INTO `stabilimento` (`id`, `id_produttore`, `nome`, `città`, `via`, `numero`, `cap`, `provincia`, `paese`) VALUES
+(1, 1, 'mulino bianco', 'Ascoli Piceno', 'ascoli', 10, 63100, 'Ascoli Piceno', 'Italia'),
+(2, 2, 'sede e stabilimento Fara San Martino', 'Fara San Martino', 'F. de cecco', 0, 66015, 'chieti', 'italia'),
+(5, 2, 'Stabilimento Ortona', 'Ortona', 'contrada Caldari Stazione', 69, 66026, 'Chieti', 'italia'),
+(6, 3, 'Stabilimento Alba Ferrero', 'Alba', 'piazzale Pietro Ferrero', 1, 12051, 'Cuneo', 'italia'),
+(7, 4, 'Stabilimento Paneangeli', 'Desenzano del Garda', 'via angeli', 4, 25015, 'Brescia', 'italia');
 
 -- --------------------------------------------------------
 
@@ -353,7 +479,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(100) NOT NULL,
   `data_nascita` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `user`
+--
+
+INSERT INTO `user` (`id`, `nome`, `cognome`, `email`, `password`, `data_nascita`) VALUES
+(1, 'Chiara', 'Michelucci', 'chiara@magnacad.it', 'chiara', '1990-10-19'),
+(2, 'Dragos', 'Stratulat', 'dragos@magnacad.it', 'dragos', '1990-01-05'),
+(3, 'Alessandro', 'Carestia', 'alessandro@magnacad.it', 'alessandro', '1990-05-05'),
+(4, 'Giacomo', 'Gigi', 'giacomo@gigi.com', 'giacomo', '1980-06-01');
 
 -- --------------------------------------------------------
 
