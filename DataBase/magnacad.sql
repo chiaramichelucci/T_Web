@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Creato il: Gen 11, 2021 alle 18:05
+-- Creato il: Gen 12, 2021 alle 15:16
 -- Versione del server: 10.4.10-MariaDB
 -- Versione PHP: 7.3.12
 
@@ -154,10 +154,20 @@ DROP TABLE IF EXISTS `immagine`;
 CREATE TABLE IF NOT EXISTS `immagine` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_prodotto` int(11) NOT NULL,
-  `url` varchar(1000) NOT NULL,
+  `url` longtext NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_prodotto` (`id_prodotto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+  KEY `id_prodotto` (`id_prodotto`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `immagine`
+--
+
+INSERT INTO `immagine` (`id`, `id_prodotto`, `url`) VALUES
+(1, 1, 'https://images-na.ssl-images-amazon.com/images/I/71mT1UlvBXL._AC_SX679_.jpg'),
+(2, 8, 'https://images-na.ssl-images-amazon.com/images/I/718EbgLF7XL._AC_SX466_.jpg'),
+(3, 17, 'https://images-na.ssl-images-amazon.com/images/I/71173%2BblQWL._AC_SL1500_.jpg'),
+(4, 18, 'https://images-na.ssl-images-amazon.com/images/I/81hrkNl3M3L._AC_SX522_.jpg');
 
 -- --------------------------------------------------------
 
@@ -175,7 +185,14 @@ CREATE TABLE IF NOT EXISTS `info_pagamento` (
   `cvv` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_ordine` (`id_ordine`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `info_pagamento`
+--
+
+INSERT INTO `info_pagamento` (`id`, `id_ordine`, `modalita`, `numero_carta`, `scadenza`, `cvv`) VALUES
+(1, 1, 'alla consegna', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -196,7 +213,14 @@ CREATE TABLE IF NOT EXISTS `info_spedizione` (
   `altre_particolarita` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_ordine` (`id_ordine`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `info_spedizione`
+--
+
+INSERT INTO `info_spedizione` (`id`, `id_ordine`, `città`, `via`, `numero`, `cap`, `provincia`, `paese`, `altre_particolarita`) VALUES
+(1, 1, 'Roma', 'Colosseo', 10, 100, 'Roma', 'Italia', NULL);
 
 -- --------------------------------------------------------
 
@@ -244,14 +268,21 @@ INSERT INTO `lotto` (`id`, `numero`, `quantita_disponibile`, `scadenza`, `id_pro
 DROP TABLE IF EXISTS `opzione_pagamento`;
 CREATE TABLE IF NOT EXISTS `opzione_pagamento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `numero_carta` int(16) NOT NULL,
+  `numero_carta` bigint(16) NOT NULL,
   `scadenza` varchar(5) NOT NULL,
   `cvv` int(3) NOT NULL,
   `nome_proprietario` text NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+  KEY `id_user` (`id_user`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `opzione_pagamento`
+--
+
+INSERT INTO `opzione_pagamento` (`id`, `numero_carta`, `scadenza`, `cvv`, `nome_proprietario`, `id_user`) VALUES
+(1, 548942200378512, '05/25', 123, 'Giacomo Gigi', 4);
 
 -- --------------------------------------------------------
 
@@ -271,8 +302,15 @@ CREATE TABLE IF NOT EXISTS `opzione_spedizione` (
   `altre_particolarita` varchar(1000) DEFAULT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+  KEY `id_user` (`id_user`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `opzione_spedizione`
+--
+
+INSERT INTO `opzione_spedizione` (`id`, `citta`, `via`, `numero`, `cap`, `provincia`, `paese`, `altre_particolarita`, `id_user`) VALUES
+(1, 'Roma', 'Colosseo', 10, 100, 'Roma', 'Italia', NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -283,15 +321,20 @@ CREATE TABLE IF NOT EXISTS `opzione_spedizione` (
 DROP TABLE IF EXISTS `ordine`;
 CREATE TABLE IF NOT EXISTS `ordine` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `totale` int(50) NOT NULL,
+  `totale` varchar(50) NOT NULL,
   `stato` varchar(100) NOT NULL,
   `data` date NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_carrello` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_carrello` (`id_carrello`),
-  KEY `id_user` (`id_user`,`id_carrello`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+  KEY `id_user` (`id_user`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `ordine`
+--
+
+INSERT INTO `ordine` (`id`, `totale`, `stato`, `data`, `id_user`) VALUES
+(1, '10', 'In corso', '2021-01-12', 4);
 
 -- --------------------------------------------------------
 
@@ -340,13 +383,23 @@ INSERT INTO `prodotto` (`id`, `nome`, `prezzo`, `sconto`, `categoria`, `descrizi
 DROP TABLE IF EXISTS `prodotto_in_ordine`;
 CREATE TABLE IF NOT EXISTS `prodotto_in_ordine` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `quantita` int(11) NOT NULL,
   `id_ordine` int(11) NOT NULL,
+  `id_prodotto` int(11) NOT NULL,
+  `quantita` int(11) NOT NULL,
   `id_lotto` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_ordine` (`id_ordine`,`id_lotto`),
-  KEY `id_lotto` (`id_lotto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+  KEY `id_lotto` (`id_lotto`),
+  KEY `id_ordine` (`id_ordine`,`id_lotto`) USING BTREE,
+  KEY `id` (`id_prodotto`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf16;
+
+--
+-- Dump dei dati per la tabella `prodotto_in_ordine`
+--
+
+INSERT INTO `prodotto_in_ordine` (`id`, `id_ordine`, `id_prodotto`, `quantita`, `id_lotto`) VALUES
+(1, 1, 1, 1, 1),
+(3, 1, 8, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -391,8 +444,8 @@ CREATE TABLE IF NOT EXISTS `recensione` (
   `voto` int(1) NOT NULL,
   `testo` text NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_user` (`id_user`,`id_prodotto`),
-  KEY `id_prodotto` (`id_prodotto`)
+  KEY `id_prodotto` (`id_prodotto`),
+  KEY `id_user` (`id_user`,`id_prodotto`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf16;
 
 --
@@ -428,8 +481,8 @@ DROP TABLE IF EXISTS `services_has_groups`;
 CREATE TABLE IF NOT EXISTS `services_has_groups` (
   `services_username` varchar(50) NOT NULL,
   `groups_id` int(11) NOT NULL,
-  UNIQUE KEY `groups_id` (`groups_id`),
-  UNIQUE KEY `services_username` (`services_username`)
+  UNIQUE KEY `services_username` (`services_username`),
+  KEY `groups_id` (`groups_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
 -- --------------------------------------------------------
@@ -506,6 +559,16 @@ CREATE TABLE IF NOT EXISTS `users_has_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
 --
+-- Dump dei dati per la tabella `users_has_groups`
+--
+
+INSERT INTO `users_has_groups` (`users_id`, `groups_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 2);
+
+--
 -- Limiti per le tabelle scaricate
 --
 
@@ -563,7 +626,6 @@ ALTER TABLE `opzione_spedizione`
 -- Limiti per la tabella `ordine`
 --
 ALTER TABLE `ordine`
-  ADD CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`id_carrello`) REFERENCES `carrello` (`id`),
   ADD CONSTRAINT `ordine_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
@@ -578,7 +640,8 @@ ALTER TABLE `prodotto`
 --
 ALTER TABLE `prodotto_in_ordine`
   ADD CONSTRAINT `prodotto_in_ordine_ibfk_1` FOREIGN KEY (`id_ordine`) REFERENCES `ordine` (`id`),
-  ADD CONSTRAINT `prodotto_in_ordine_ibfk_2` FOREIGN KEY (`id_lotto`) REFERENCES `lotto` (`id`);
+  ADD CONSTRAINT `prodotto_in_ordine_ibfk_2` FOREIGN KEY (`id_lotto`) REFERENCES `lotto` (`id`),
+  ADD CONSTRAINT `prodotto_in_ordine_ibfk_3` FOREIGN KEY (`id_prodotto`) REFERENCES `prodotto` (`id`);
 
 --
 -- Limiti per la tabella `recensione`
