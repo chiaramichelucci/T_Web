@@ -1,17 +1,20 @@
-<?php
+<?php 
 
     class StabilimentoPDO{
 
-        public $conn;
+        protected $conn;
+        protected $table_name = "stabilimento";
 
-        function __construct(\PDO $pdo){
-            $this->conn = $pdo;
+        public function __construct($db){
+            $this->conn = $db;
         }
 
-       function getStabilimenti() {
-            return $this->conn->query("SELECT id, id_produttore, nome, città, via, numero, cap, provincia, paese FROM stabilimento")->fetchAll();
-        }      
-
+        public function getAll(){
+            $sql = "SELECT * FROM " . $this->table_name;
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute();
+            return $stmt;
+        }
     }
 
 ?>

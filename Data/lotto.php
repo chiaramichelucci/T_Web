@@ -1,7 +1,7 @@
 <?php require '../PDO/lottoPDO.php' ?>
 <?php
 
-    class Lotto extends lottoPDO{
+    class Lotto extends LottoPDO{
 
         public $id;
         public $numero;
@@ -10,12 +10,8 @@
         public $id_prodotto;
         public $id_stabilimento;   
 
-        public function __construct($numero, $quantita_disponibile, $scadenza, $id_prodotto, $id_stabilimento) {
-            $this->numero = $numero;
-            $this->quantita_disponibile = $quantita_disponibile;
-            $this->scadenza = $scadenza;
-            $this->id_prodotto = $id_prodotto;
-            $this->id_stabilimento = $id_stabilimento;
+        public function __construct($db) {
+            parent::__construct($db);
         }
 
         public function getId(){

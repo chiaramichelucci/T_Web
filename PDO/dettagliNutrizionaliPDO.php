@@ -1,18 +1,20 @@
-<?php
+<?php 
 
     class DettagliNutrizionaliPDO{
 
-        public $conn;
+        protected $conn;
+        protected $table_name = "dettagli_nutrizionali";
 
-        function __construct(\PDO $pdo){
-            $this->conn = $pdo;
+        public function __construct($db){
+            $this->conn = $db;
         }
 
-       function getDettagliNutrizionali() {
-            return $this->conn->query("SELECT id, id_prodotto, energia, grassi, carboidrati, proteine, sale, anidrite_carbonica, calcio, sodio 
-            FROM dettagli_nutrizionali")->fetchAll();
-        }      
-
+        public function getAll(){
+            $sql = "SELECT * FROM " . $this->table_name;
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute();
+            return $stmt;
+        }
     }
 
 ?>

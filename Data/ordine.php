@@ -1,7 +1,7 @@
-<?php require '../ordinePDO/PDO.php' ?>
+<?php require '../PDO/ordinePDO.php' ?>
 <?php
 
-    class Ordine extends ordinePDO{
+    class Ordine extends OrdinePDO{
 
         public $id;
         public $totale;
@@ -10,12 +10,8 @@
         public $id_user;
         public $id_carrello;   
 
-        public function __construct($totale, $stato, $data, $id_user, $id_carrello) {
-            $this->totale = $totale;
-            $this->stato = $stato;
-            $this->data = $data;
-            $this->id_user = $id_user;
-            $this->id_carrello = $id_carrello;
+        public function __construct($db) {
+            parent::__construct($db);
         }
 
         public function getId(){

@@ -1,17 +1,20 @@
-<?php
+<?php 
 
     class ImmaginePDO{
 
-        public $conn;
+        protected $conn;
+        protected $table_name = "immagine";
 
-        function __construct(\PDO $pdo){
-            $this->conn = $pdo;
+        public function __construct($db){
+            $this->conn = $db;
         }
 
-       function getImmagine() {
-            return $this->conn->query("SELECT id, id_prodotto, uri FROM immagine")->fetchAll();
-        }      
-
+        public function getAll(){
+            $sql = "SELECT * FROM " . $this->table_name;
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute();
+            return $stmt;
+        }
     }
 
 ?>

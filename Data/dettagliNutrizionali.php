@@ -1,7 +1,7 @@
 <?php require '../PDO/dettagliNutrizionaliPDO.php' ?>
 <?php
 
-    class DettagliNutrizionali extends dettagliNutrizionaliPDO{
+    class DettagliNutrizionali extends DettagliNutrizionaliPDO{
 
         public $id;
         public $id_prodotto;
@@ -14,16 +14,8 @@
         public $calcio;
         public $sodio;
 
-        public function __construct($id_prodotto, $energia, $grassi, $carboidrati, $proteine, $sale, $anidrite_carbonica, $calcio, $sodio) {
-            $this->id_prodotto = $id_prodotto;
-            $this->energia = $energia;
-            $this->grassi = $grassi;
-            $this->carboidrati = $carboidrati;
-            $this->proteine = $proteine;
-            $this->sale = $sale;
-            $this->anidrite_carbonica = $anidrite_carbonica;
-            $this->calcio = $calcio;
-            $this->sodio = $sodio;
+        public function __construct($db) {
+            parent::__construct($db);
         }
 
         public function getId(){

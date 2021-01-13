@@ -1,15 +1,14 @@
 <?php require '../PDO/immaginePDO.php' ?>
 <?php
 
-    class Immagine extends immaginePDO{
+    class Immagine extends ImmaginePDO{
 
         public $id;
         public $id_prodotto;
         public $uri;        
 
-        public function __construct($id_prodotto, $uri) {
-            $this->id_prodotto = $id_prodotto;
-            $this->uri = $uri;
+        public function __construct($db) {
+            parent::__construct($db);
         }
 
         public function getId(){

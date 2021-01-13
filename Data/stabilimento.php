@@ -1,7 +1,7 @@
-<?php require '../stabilimentoPDO/PDO.php' ?>
+<?php require '../PDO/stabilimentoPDO.php' ?>
 <?php
 
-    class Stabilimento extends stabilimentoPDO{
+    class Stabilimento extends StabilimentoPDO{
 
         public $id;
         public $id_produttore;
@@ -13,15 +13,8 @@
         public $provincia; 
         public $paese;
 
-        public function __construct($id_produttore, $nome, $città, $via, $numero, $cap, $provincia, $paese) {
-            $this->id_produttore = $id_produttore;
-            $this->nome = $nome;
-            $this->città = $città;
-            $this->via = $via;
-            $this->numero = $numero;
-            $this->cap = $cap;
-            $this->provincia = $provincia;
-            $this->paese = $paese;
+        public function __construct($db) {
+            parent::__construct($db);
         }
 
         public function getId(){

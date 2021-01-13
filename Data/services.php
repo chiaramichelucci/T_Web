@@ -1,14 +1,13 @@
-<?php require '../servicesPDO/PDO.php' ?>
+<?php require '../PDO/servicesPDO.php' ?>
 <?php
 
-    class Services extends servicesPDO{
+    class Services extends ServicesPDO{
 
         public $username;
         public $permisions;  
 
-        public function __construct($username, $permisions) {
-            $this->username = $username;
-            $this->permisions = $permisions;
+        public function __construct($db) {
+            parent::__construct($db);
         }
 
         public function getUsername(){
