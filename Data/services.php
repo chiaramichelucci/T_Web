@@ -1,6 +1,7 @@
+<?php require '../servicesPDO/PDO.php' ?>
 <?php
 
-    class Services{
+    class Services extends servicesPDO{
 
         public $username;
         public $permisions;  

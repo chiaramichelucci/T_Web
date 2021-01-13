@@ -1,7 +1,7 @@
 <?php require '../PDO/GroupHasServicesPDO.php' ?>
 <?php
 
-    class GroupHasServices extends GroupHasServices{
+    class GroupHasServices extends GroupHasServicesPDO{
 
         public $service_username;
         public $group_id;

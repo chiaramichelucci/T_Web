@@ -1,6 +1,7 @@
+<?php require '../stabilimentoPDO/PDO.php' ?>
 <?php
 
-    class Stabilimento{
+    class Stabilimento extends stabilimentoPDO{
 
         public $id;
         public $id_produttore;

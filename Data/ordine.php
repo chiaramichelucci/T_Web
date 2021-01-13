@@ -1,6 +1,7 @@
+<?php require '../ordinePDO/PDO.php' ?>
 <?php
 
-    class Ordine{
+    class Ordine extends ordinePDO{
 
         public $id;
         public $totale;

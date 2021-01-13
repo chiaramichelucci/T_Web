@@ -1,6 +1,7 @@
+<?php require '../PDO/dettagliNutrizionaliPDO.php' ?>
 <?php
 
-    class DettagliNutrizionali{
+    class DettagliNutrizionali extends dettagliNutrizionaliPDO{
 
         public $id;
         public $id_prodotto;
