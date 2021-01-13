@@ -1,6 +1,7 @@
+<?php require '../PDO/infoSpedizionePDO.php' ?>
 <?php
 
-    class InfoSpedizione{
+    class InfoSpedizione extends InfoSpedizionePDO{
 
         public $id;
         public $citta;
@@ -12,15 +13,8 @@
         public $altre_particolarita;
         public $id_ordine;
 
-        public function __construct($citta, $via, $nr, $cap, $prov, $paese, $altre, $id_ordine) {
-            $this->citta = $citta;
-            $this->via = $via;
-            $this->numero = $nr;
-            $this->cap = $cap;
-            $this->provincia = $prov;
-            $this->paese = $paese;
-            $this->altre_particolarita = $altre;
-            $this->id_ordine = $id_ordine;
+        public function __construct($db) {
+            parent::__construct($db);
         }
 
         public function getCitta(){

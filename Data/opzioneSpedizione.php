@@ -1,6 +1,7 @@
+<?php require '../PDO/opzioneSpedizionePDO.php' ?>
 <?php
 
-    class OpzioneSpedizione{
+    class OpzioneSpedizione extends OpzioneSpedizionePDO{
 
         public $id;
         public $citta;
@@ -12,15 +13,8 @@
         public $altre_particolarita;
         public $id_utente;
 
-        public function __construct($citta, $via, $nr, $cap, $prov, $paese, $altre, $id_utente) {
-            $this->citta = $citta;
-            $this->via = $via;
-            $this->numero = $nr;
-            $this->cap = $cap;
-            $this->provincia = $prov;
-            $this->paese = $paese;
-            $this->altre_particolarita = $altre;
-            $this->id_utente = $id_utente;
+        public function __construct($db) {
+            parent::__construct($db);
         }
 
         public function getCitta(){

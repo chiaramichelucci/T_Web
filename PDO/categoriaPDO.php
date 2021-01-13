@@ -1,19 +1,20 @@
-<?php
+<?php 
 
-    class ProduttorePDO{
+    class CategoriaPDO{
 
-        public $conn;
+        protected $conn;
+        protected $table_name = "categoria";
 
-        function __construct(\PDO $pdo){
-            $this->conn = $pdo;
+        public function __construct($db){
+            $this->conn = $db;
         }
 
-        //da aggiungere qua tutte le funzioni mysql per l'oggetto categoria
-
-        function getCategorie() {
-            return $this->conn->query("SELECT * FROM prodotto")->fetchAll();
-        } 
-
+        public function getAll(){
+            $sql = "SELECT * FROM " . $this->table_name;
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute();
+            return $stmt;
+        }
     }
 
 ?>

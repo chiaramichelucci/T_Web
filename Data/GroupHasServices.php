@@ -1,13 +1,13 @@
+<?php require '../PDO/GroupHasServicesPDO.php' ?>
 <?php
 
-    class GroupHasServices {
+    class GroupHasServices extends GroupHasServices{
 
         public $service_username;
         public $group_id;
 
-        public function __construct($service_username, $group_id) {
-            $this->service_username = $service_username;
-            $this->group_id = $group_id;
+        public function __construct($id) {
+            parent::__construct($db);
         }
 
         public function getServiceUsername(){
@@ -15,7 +15,7 @@
         }
 
         public function getGroupId(){
-            return $this->$group_id
+            return $this->$group_id;
         }
 
         public function setServiceUsername($service_username){

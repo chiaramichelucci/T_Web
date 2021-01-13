@@ -9,7 +9,7 @@
             $this->conn = $db;
         }
 
-        public function getProdotti(){
+        public function getAll(){
             $sql = "SELECT * FROM " . $this->table_name;
             $stmt = $this->conn->prepare( $sql );
             $stmt->execute();

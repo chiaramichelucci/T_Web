@@ -1,6 +1,7 @@
+<?php require '../PDO/produttorePDO.php' ?>
 <?php
 
-    class Produttore{
+    class Produttore extends ProduttorePDO{
 
         public $id;
         public $ragione_sociale;
@@ -10,13 +11,8 @@
         public $email;
         public $sito;
 
-        public function __construct($rs, $piva, $prefisso, $nv, $email, $sito) {
-            $this->ragione_sociale = $rs;
-            $this->partita_iva = $piva;
-            $this->prefisso = $prefisso;
-            $this->numero_verde = $nv;
-            $this->email = $email;
-            $this->sito = $sito;
+        public function __construct($db) {
+            parent::__construct($db);
         }
 
         public function getID(){

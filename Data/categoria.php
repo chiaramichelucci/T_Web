@@ -1,12 +1,13 @@
+<?php require '../PDO/categoriaPDO.php' ?>
 <?php
 
-    class Categoria{
+    class Categoria extends CategoriaPDO{
 
         public $id;
         public $nome;
 
-        public function __construct($nome) {
-            $this->nome = $nome;
+        public function __construct($db) {
+            parent::__construct($db);
         }
 
         public function getID(){

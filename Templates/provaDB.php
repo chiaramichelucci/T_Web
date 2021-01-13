@@ -9,7 +9,7 @@
             $database = new Database();
             $db = $database->getConnection();
             $coso = new Prodotto($db);
-            $stmt = $coso->getProdotti();
+            $stmt = $coso->getAll();
             $num = $stmt->rowCount();
             if($num>0){
   

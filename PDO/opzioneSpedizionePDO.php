@@ -1,19 +1,20 @@
-<?php
+<?php 
 
     class OpzioneSpedizionePDO{
 
-        public $conn;
+        protected $conn;
+        protected $table_name = "opzione_spedizione";
 
-        function __construct(\PDO $pdo){
-            $this->conn = $pdo;
+        public function __construct($db){
+            $this->conn = $db;
         }
 
-        //da aggiungere qua tutte le funzioni mysql per l'oggetto opzione spedizione
-
-        function getopzioniSpedizione() {
-            return $this->conn->query("SELECT * FROM opzione_spedizione")->fetchAll();
-        } 
-
+        public function getAll(){
+            $sql = "SELECT * FROM " . $this->table_name;
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute();
+            return $stmt;
+        }
     }
 
 ?>
