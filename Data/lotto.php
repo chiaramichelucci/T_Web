@@ -1,6 +1,7 @@
+<?php require '../PDO/lottoPDO.php' ?>
 <?php
 
-    class Lotto{
+    class Lotto extends lottoPDO{
 
         public $id;
         public $numero;

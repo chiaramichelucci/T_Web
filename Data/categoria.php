@@ -1,6 +1,7 @@
+<?php require '../PDO/categoriaPDO.php' ?>
 <?php
 
-    class Categoria{
+    class Categoria extends CategoriaPDO{
 
         public $id;
         public $nome;

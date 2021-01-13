@@ -1,6 +1,7 @@
+<?php require '../produttorePDO/PDO.php' ?>
 <?php
 
-    class Produttore{
+    class Produttore extends produttorePDO{
 
         public $id;
         public $ragione_sociale;

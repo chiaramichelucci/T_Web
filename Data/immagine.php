@@ -1,6 +1,7 @@
+<?php require '../PDO/immaginePDO.php' ?>
 <?php
 
-    class Immagine{
+    class Immagine extends immaginePDO{
 
         public $id;
         public $id_prodotto;

@@ -1,6 +1,7 @@
+<?php require '../opzioneSpedizionePDO/PDO.php' ?>
 <?php
 
-    class OpzioneSpedizione{
+    class OpzioneSpedizione extends opzioneSpedizionePDO {
 
         public $id;
         public $citta;
