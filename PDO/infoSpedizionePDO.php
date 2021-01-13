@@ -1,6 +1,6 @@
 <?php
 
-    class InfoSpedizionePDO extends InfoSpedizione{
+    class InfoSpedizionePDO{
 
         public $conn;
 

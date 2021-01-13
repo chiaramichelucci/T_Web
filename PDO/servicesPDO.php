@@ -1,6 +1,6 @@
 <?php
 
-    class ServicesPDO extends Services{
+    class ServicesPDO{
 
         public $conn;
 

@@ -1,6 +1,6 @@
 <?php
 
-    class GroupHasServicesPDO extends GroupHasServices{
+    class GroupHasServicesPDO{
 
         public $conn;
 

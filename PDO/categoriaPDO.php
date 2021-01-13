@@ -1,6 +1,6 @@
 <?php
 
-    class ProduttorePDO extends Produttore{
+    class ProduttorePDO{
 
         public $conn;
 

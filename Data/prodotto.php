@@ -1,6 +1,7 @@
+<?php require '../PDO/prodottoPDO.php' ?>
 <?php
 
-    class Prodotto{
+    class Prodotto extends ProdottoPDO{
 
         public $id;
         public $prezzo;
@@ -9,12 +10,8 @@
         public $descrizione;
         public $id_produttore;
 
-        public function __construct($prezzo, $sconto, $id_categoria, $descrizione, $id_produttore) {
-            $this->prezzo = $prezzo;
-            $this->sconto = $sconto;
-            $this->id_categoria = $id_categoria;
-            $this->descrizione = $descrizione;
-            $this->id_produttore = $id_produttore;
+        public function __construct($db) {
+            parent::__construct($db);
         }
 
         public function getId(){
@@ -60,6 +57,7 @@
         public function setIdProduttore($id_produttore){
             $this->id_produttore = $id_produttore;
         }
+
     }
 
 ?>

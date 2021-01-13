@@ -1,31 +1,20 @@
-<?php
+<?php 
 
-    class ProdottoPDO extends Prodotto{
+    class ProdottoPDO{
 
-        public $conn;
+        protected $conn;
+        protected $table_name = "prodotto";
 
-        function __construct(\PDO $pdo){
-            $this->conn = $pdo;
+        public function __construct($db){
+            $this->conn = $db;
         }
 
-        //da aggiungere qua tutte le funzioni mysql per l'oggetto prodotto
-
-       function getProdotti() {
-            return $this->conn->query("SELECT * FROM prodotto")->fetchAll();
+        public function getProdotti(){
+            $sql = "SELECT * FROM " . $this->table_name;
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute();
+            return $stmt;
         }
-
-        function getProdotto($id) {
-            return $this->conn->query("SELECT * FROM prodotto WHERE id \= ". $id)->fetchAll();
-        }
-
-        function deleteProdotto($id) {
-            return $this->conn->exec("DELETE FROM prodotto WHERE id \= ". $id);
-        }
-
-        function modProdotti() {
-            return $this->conn->exec("SELECT * FROM prodotto");
-        }
-        
-        
     }
+
 ?>

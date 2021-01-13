@@ -1,6 +1,6 @@
 <?php
 
-    class OpzioneSpedizionePDO extends OpzioneSpedizione{
+    class OpzioneSpedizionePDO{
 
         public $conn;
 

@@ -1,6 +1,6 @@
 <?php
 
-    class LottoPDO extends Lotto{
+    class LottoPDO{
 
         public $conn;
 

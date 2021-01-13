@@ -1,6 +1,6 @@
 <?php
 
-    class StabilimentoPDO extends Stabilimento{
+    class StabilimentoPDO{
 
         public $conn;
 

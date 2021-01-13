@@ -1,6 +1,6 @@
 <?php
 
-    class ImmaginePDO extends Immagine{
+    class ImmaginePDO{
 
         public $conn;
 

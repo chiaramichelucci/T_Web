@@ -1,6 +1,6 @@
 <?php
 
-    class DettagliNutrizionaliPDO extends DettagliNutrizionali{
+    class DettagliNutrizionaliPDO{
 
         public $conn;
 

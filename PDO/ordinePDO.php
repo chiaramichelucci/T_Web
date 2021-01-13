@@ -1,6 +1,6 @@
 <?php
 
-    class OrdinePDO extends Ordine{
+    class OrdinePDO{
 
         public $conn;
 
