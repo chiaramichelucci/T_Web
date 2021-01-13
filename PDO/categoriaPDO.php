@@ -1,6 +1,6 @@
 <?php
 
-    class ProduttorePDO{
+    class CategoriaPDO{
 
         public $conn;
 
