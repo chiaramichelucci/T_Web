@@ -9,8 +9,8 @@
             $this->conn = $db;
         }
 
-        public function getAll(){
-            $sql = "SELECT * FROM " . $this->table_name;
+        public function getByProdId($idProd){
+            $sql = "SELECT url AS url_prod_img FROM " . $this->table_name . " WHERE id_prodotto = " . $idProd;
             $stmt = $this->conn->prepare( $sql );
             $stmt->execute();
             return $stmt;

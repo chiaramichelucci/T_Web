@@ -15,6 +15,14 @@
             $stmt->execute();
             return $stmt;
         }
+
+        public function getNomePrezzo(){
+            $sql = "SELECT id AS prod_id, nome AS prod_nome, prezzo AS prod_prezzo FROM " . $this->table_name;
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute();
+            return $stmt;
+        }
+
     }
 
 ?>
