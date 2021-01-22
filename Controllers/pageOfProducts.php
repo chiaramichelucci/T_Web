@@ -44,13 +44,13 @@
 		}
 	}*/
 
-	$html = '<ul class="pagination">';
+	/*$html = '<ul class="pagination">';
 	if($page == 1){
 		$class = "disabled";
 	} else {
 		$class = "";
 	}
-	$html = '<li class="' . $class . '"><a href="?page="' . $page . '';
+	$html = '<li class="' . $class . '"><a href="?page="' . $page . '';*/
 
 	if($num>0){
 	while ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
