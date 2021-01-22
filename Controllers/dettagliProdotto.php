@@ -13,9 +13,10 @@
 
     $database = new Database();
     $db = $database->getConnection();
-	$prodotto = new Prodotto($db);
+    $prodotto = new Prodotto($db);
     $images = new Immagine($db);
     $lotto = new Lotto($db);
+    $prod = new Produttore($db);
     $rec = new Recensione($db);
     $dettN = new dettagli_nutrizionali($db);
 
@@ -46,6 +47,11 @@
 
     $dn = $dettN -> getByProdId($id);
     //voglio visualizzare i dettagli nutrizionali sotto forma di tabella
+
+    //seleziono l'id del produttore dalla tabella prodotto
+    //e prendo il link del sito
+    $produttore = print_r($data['id_produttore'], true);
+    $link = $prod -> getByProdId($produttore);
 
     $main->close();
 ?>
