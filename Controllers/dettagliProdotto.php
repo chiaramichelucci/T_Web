@@ -5,6 +5,7 @@
 	require "../Data/immagine.php";
     require "../Data/prodotto.php";
     require "../Data/lotto.php";
+    require "../Data/produttore.php";
     require "../Data/Recensione.php";
     require "../Data/dettagliNutrizionali.php";
 
@@ -18,7 +19,7 @@
     $lotto = new Lotto($db);
     $prod = new Produttore($db);
     $rec = new Recensione($db);
-    $dettN = new dettagli_nutrizionali($db);
+    $dettN = new DettagliNutrizionali($db);
 
     $id = print_r($data['id'], true);
 

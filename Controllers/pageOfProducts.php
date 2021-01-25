@@ -18,8 +18,8 @@
 	$database = new Database();
     $db = $database->getConnection();
 	$prodotti = new Prodotto($db);
-	$s ->prodotti->getAll();
-	$total_result = $s->fetchColumn();
+	$s = $prodotti->getAll();
+	$total_results = $s->fetchColumn();
 	$total_pages = ceil($total_results/$limit);
 	$starting_limit = ($page-1)*$limit;            //sto limit non mi convince
 	$stmt = $prodotti->getNProd($starting_limit, $limit);

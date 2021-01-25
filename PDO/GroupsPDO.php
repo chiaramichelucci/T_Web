@@ -16,6 +16,14 @@
             return $stmt;
         }
 
+        public function checkGroup($userID){
+            $sql = "SELECT * FROM " . $this->table_name . "WHERE id_user = " . "'" . $userID . "'";
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute();
+            $gruppo = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $gruppo;
+        }
+
     }
 
 ?>
