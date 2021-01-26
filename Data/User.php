@@ -25,7 +25,7 @@
         public function getCognome(){
             return $this->cognome;
         }
-        public function getEmail()){
+        public function getEmail(){
             return $this->email;
         }
 
@@ -60,6 +60,19 @@
             $this->data_nascita = $data_nascita;
         }
 
+        public function checkUser($username, $password){
+            $coso = parent::checkUser($username, $password);
+            if($coso == false){
+                $this->setId(0);
+            } else {
+                $this->setId($coso['id']);
+                $this->setNome($coso['nome']);
+                $this->setCognome($coso['cognome']);
+                $this->setEmail($coso['email']);
+                $this->setPassword($coso['password']);
+                $this->setDataNascita($coso['data_nascita']);
+            }
+        }
     }
 
 ?>
