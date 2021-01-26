@@ -17,8 +17,8 @@
         }  
 
         public function checkUser($email, $password){
-            $hashedPassword = hash('sha256', $password);
-            $sql = "SELECT * FROM " . $this->table_name . " WHERE email = " . "'" . $email . "'" . " AND password = " . "'" .  $password . "'";
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+            $sql = "SELECT * FROM " . $this->table_name . " WHERE email = " . "'" . $email . "'" . " AND password = " . "'" .  $hashedPassword . "'";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             $num = $stmt->rowCount();
@@ -27,6 +27,29 @@
             } else {
                 $utente = $stmt->fetch(PDO::FETCH_ASSOC);
                 return $utente;
+            }
+        }
+
+        public function registerUser($name, $cogname, $password, $email, $data_nascita){
+            $query = "
+                INSERT INTO " . $this->table_name . " (nome, cognome, email, password, data_nascita)
+                VALUES (?, ?, ?, ?, ?)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([$name, $cogname, $email, $password, $data_nascita]);
+        }
+
+        public function checkEmail($email){
+            $query = "
+            SELECT id
+            FROM " . $this->table_name . "
+            WHERE email = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([$email]);
+            $num = $stmt->rowCount();
+            if($num == 0){
+                return false;
+            } else {
+                return true;
             }
         }
 

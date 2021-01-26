@@ -7,9 +7,13 @@
     $main = new Template("");  //il template da iniziare in caso di login con sucesso
     $error = new Template(""); // in caso di login falito
 
+    //chiedere al prof la buona norma per fare login automato dopo la registrazione
+
     $checkSession = session_status();
-    if($checkSession == PHP_SESSION_NONE){
-        $failed = false; // tiene conto dello stato del login
+    if($checkSession == PHP_SESSION_ACTIVE){
+        session_destroy();
+    }
+    $failed = false; // tiene conto dello stato del login
         $username = (isset( $_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : $failed = true;
         $password = (isset( $_POST['password']) && !empty($_POST['username'])) ? $_POST['password'] : $failed = true;
         $database = new Database();
@@ -31,7 +35,6 @@
         } else {
             $main->setContent("error", $error->get());
         }
-    }
 
     $main->close();
 
