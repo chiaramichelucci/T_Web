@@ -9,10 +9,6 @@
 
     //chiedere al prof la buona norma per fare login automato dopo la registrazione
 
-    $checkSession = session_status();
-    if($checkSession == PHP_SESSION_ACTIVE){
-        session_destroy();
-    }
     $failed = false; // tiene conto dello stato del login
         $username = (isset( $_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : $failed = true;
         $password = (isset( $_POST['password']) && !empty($_POST['username'])) ? $_POST['password'] : $failed = true;
@@ -29,6 +25,10 @@
             $userGroup = $group->checkGroup($user->id);
         }
         if(!$failed){
+            $checkSession = session_status();
+            if($checkSession == PHP_SESSION_ACTIVE){
+            session_destroy();
+            }
            start_session();
            $_SESSION['user'] = $user;
            $_SESSION['group'] = $userGroup;

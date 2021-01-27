@@ -36,6 +36,10 @@
                 VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->conn->prepare($query);
             $stmt->execute([$name, $cogname, $email, $password, $data_nascita]);
+            $newid = $stmt->lastInsertId();
+            $query2 = "INSERT INTO users_has_groups (users_id, groups_id) VALUES (?, ?)";
+            $stmt = $this->conn->prepare($query2);
+            $stmt->execute([$newid, 2]);
         }
 
         public function checkEmail($email){

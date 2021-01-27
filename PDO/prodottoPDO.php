@@ -17,7 +17,7 @@
         }
 
         public function getNProd($limit, $page){
-            $sql = "SELECT * FROM " . $this->table_name . "LIMIT " . $page . "," . $limit;
+            $sql = "SELECT * FROM " . $this->table_name . "LIMIT " . $page . " , " . $limit;
             $stmt = $this->conn->prepare( $sql );
             $stmt->execute();
             return $stmt;

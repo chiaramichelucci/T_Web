@@ -69,7 +69,6 @@
                 $this->setNome($coso['nome']);
                 $this->setCognome($coso['cognome']);
                 $this->setEmail($coso['email']);
-                $this->setPassword($coso['password']);
                 $this->setDataNascita($coso['data_nascita']);
             }
         }

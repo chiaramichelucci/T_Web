@@ -5,12 +5,22 @@
 	require "../Data/prodotto.php";
 	require "../include/template2.inc.php";
 
-	$main = new Template("../dtml/listaProdotti.html"); 	// template principale comune a tutte le pagine del sito
-	//$body = new Template("dtml/homepage.html"); 		// sottotemplate per la home
+	$checkSession = session_status();
+	if($checkSession == PHP_SESSION_ACTIVE){
+		if($_SESSION['group'] == 1){
+			$bar = new Template("../dtml/userBarAdmin.html");
+		} else {
+			$bar = new Template("../dtml/userBarGeneric.html");
+		}
+	} else {
+		$bar = new Template("../dtml/userBarUnsigned.html");
+	}
+
+	$main = new Template("../dtml/mainFrame.html"); 	// template principale comune a tutte le pagine del sito
 	$card = new Template("../dtml/products.html"); // sottotemplate per il singolo prodotto
 	$pag = new Template("../dtml/pagination.html");
 
-	/* banner section */
+	/* banner section */ //da vedere limit e la paginazione
 
 	$limit      = ( isset( $_GET['limit'] ) ) ? $_GET['limit'] : 9;
     $page       = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
@@ -68,9 +78,9 @@
 		}
 	};
 	}
-
+	$main->setContent("userbar", $bar->get());
 	$main->setContent("prodotti", $card->get());
-	$main->setContent("paging", $pag->get());
+	//$main->setContent("paging", $pag->get());
 	$main->close();
 
 ?>
