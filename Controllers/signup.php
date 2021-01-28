@@ -1,6 +1,6 @@
 <?php
 require "../PDO/database.php";
-require "../Data/User.php";
+require "../Data/user.php";
 
 
 if (isset($_POST['submit'])) {     //controllo valori nella richiesta  

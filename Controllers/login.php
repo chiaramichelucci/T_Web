@@ -1,13 +1,13 @@
 <?php
     require "../Data/user.php";
-    require "../Data/Groups.php";
+    require "../Data/groups.php";
     require "../PDO/database.php";
     require "../include/template2.inc.php";
 
-    $main = new Template("");  //il template da iniziare in caso di login con sucesso
-    $error = new Template(""); // in caso di login falito
+    $main = new Template("");  //il template da iniziare in caso di login con successo
+    $error = new Template(""); // in caso di login fallito
 
-    //chiedere al prof la buona norma per fare login automato dopo la registrazione
+    //chiedere al prof la buona norma per fare login automatico dopo la registrazione
 
     $failed = false; // tiene conto dello stato del login
         $username = (isset( $_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : $failed = true;
@@ -19,7 +19,7 @@
         //$user->checkUser("dragos@magnacad.it", "dragos");
         if($user->id == 0){
             $failed = true;
-            $error->setContent("messagio", "Username e password sbalgiate");
+            $error->setContent("messaggio", "Username e password errate!");
         } else {
             $group = new Groups($db);
             $userGroup = $group->checkGroup($user->id);

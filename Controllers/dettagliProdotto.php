@@ -6,7 +6,7 @@
     require "../Data/prodotto.php";
     require "../Data/lotto.php";
     require "../Data/produttore.php";
-    require "../Data/Recensione.php";
+    require "../Data/recensione.php";
     require "../Data/dettagliNutrizionali.php";
 
     $main = new Template("../dtml/singoloProdotto.html");
