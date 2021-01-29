@@ -32,8 +32,9 @@
 	$total_results = $s->fetchColumn();
 	$total_pages = ceil($total_results/$limit);
 	$starting_limit = ($page-1)*$limit;            //sto limit non mi convince
-	$stmt = $prodotti->getNProd($starting_limit, $limit);
-	$num = $stmt->rowCount();
+	//$stmt = $prodotti->getNProd($starting_limit, $limit);
+	//$num = $stmt->rowCount();
+	$num = 0;
 	$images = new Immagine($db);
 
 	/*$pag->setContent("page_nP", $page-1);
