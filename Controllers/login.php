@@ -4,8 +4,8 @@
     require "../PDO/database.php";
     require "../include/template2.inc.php";
 
-    $main = new Template("");  //il template da iniziare in caso di login con successo
-    $error = new Template(""); // in caso di login fallito
+    $main = new Template("../dtml/mainFrame.html");  //il template da iniziare in caso di login con successo
+    $error = new Template("../dtml/error.html"); // in caso di login fallito
 
     //chiedere al prof la buona norma per fare login automatico dopo la registrazione
 

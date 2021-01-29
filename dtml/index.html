@@ -17,14 +17,14 @@
 		}
 	</script>
 	<!--//tags -->
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="dtml/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="dtml/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="dtml/css/font-awesome.css" rel="stylesheet">
 	<!--pop-up-box-->
-	<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="dtml/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
 	<!--//pop-up-box-->
 	<!-- price range -->
-	<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
+	<link rel="stylesheet" type="text/css" href="dtml/css/jquery-ui1.css">
 	<!-- fonts -->
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 </head>
@@ -102,9 +102,9 @@
 							<a href="#" data-toggle="modal" data-target="#myModal2">
 								Sign Up</a>
 						</p>
-						<form action="#" method="post">
+						<form action="Controllers/login.php" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="User Name" name="Name" required="">
+								<input type="email" placeholder="Email" name="Email" required="">
 							</div>
 							<div class="styled-input">
 								<input type="password" placeholder="Password" name="password" required="">
@@ -140,12 +140,18 @@
 						<p>
 							Procedi a creare il tuo Account.
 						</p>
-						<form action="#" method="post">
+						<form action="Controllers/signup.php" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="Name" name="Name" required="">
+								<input type="text" placeholder="Nome" name="Nome" required="">
+							</div>
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" placeholder="Cognome" name="Cognome" required="">
 							</div>
 							<div class="styled-input">
 								<input type="email" placeholder="E-mail" name="Email" required="">
+							</div>
+							<div class="styled-input">
+								<input type="date" placeholder="Data Nascita" name="dataNascita" required="">
 							</div>
 							<div class="styled-input">
 								<input type="password" placeholder="Password" name="password" id="password1" required="">
@@ -448,7 +454,7 @@
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/mk7.jpg" alt="">
+									<img src="dtml/images/mk7.jpg" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="single.html" class="link-product-add-cart">Visualizza</a>
@@ -486,7 +492,7 @@
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/mk8.jpg" alt="">
+									<img src="dtml/images/mk8.jpg" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="single.html" class="link-product-add-cart">Visualizza</a>
@@ -526,7 +532,7 @@
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
-									<img src="images/mk9.jpg" alt="">
+									<img src="dtml/images/mk9.jpg" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
 											<a href="single.html" class="link-product-add-cart">Visualizza</a>
@@ -591,7 +597,7 @@
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="single.html">
-									<img src="images/s1.jpg" alt="">
+									<img src="dtml/images/s1.jpg" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
@@ -625,7 +631,7 @@
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="single.html">
-									<img src="images/s4.jpg" alt="">
+									<img src="dtml/images/s4.jpg" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
@@ -659,7 +665,7 @@
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="single.html">
-									<img src="images/s2.jpg" alt="">
+									<img src="dtml/images/s2.jpg" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
@@ -693,7 +699,7 @@
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="single2.html">
-									<img src="images/s3.jpg" alt="">
+									<img src="dtml/images/s3.jpg" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
@@ -727,7 +733,7 @@
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="single.html">
-									<img src="images/s8.jpg" alt="">
+									<img src="dtml/images/s8.jpg" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
@@ -761,7 +767,7 @@
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="single2.html">
-									<img src="images/s6.jpg" alt="">
+									<img src="dtml/images/s6.jpg" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
@@ -795,7 +801,7 @@
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="single.html">
-									<img src="images/s5.jpg" alt="">
+									<img src="dtml/images/s5.jpg" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
@@ -829,7 +835,7 @@
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="single2.html">
-									<img src="images/s9.jpg" alt="">
+									<img src="dtml/images/s9.jpg" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
@@ -983,31 +989,31 @@
                 <h5>Metodo di Pagamento</h5>
                 <ul>
                     <li>
-                        <img src="images/pay2.png" alt="">
+                        <img src="dtml/images/pay2.png" alt="">
                     </li>
                     <li>
-                        <img src="images/pay5.png" alt="">
+                        <img src="dtml/images/pay5.png" alt="">
                     </li>
                     <li>
-                        <img src="images/pay1.png" alt="">
+                        <img src="dtml/images/pay1.png" alt="">
                     </li>
                     <li>
-                        <img src="images/pay4.png" alt="">
+                        <img src="dtml/images/pay4.png" alt="">
                     </li>
                     <li>
-                        <img src="images/pay6.png" alt="">
+                        <img src="dtml/images/pay6.png" alt="">
                     </li>
                     <li>
-                        <img src="images/pay3.png" alt="">
+                        <img src="dtml/images/pay3.png" alt="">
                     </li>
                     <li>
-                        <img src="images/pay7.png" alt="">
+                        <img src="dtml/images/pay7.png" alt="">
                     </li>
                     <li>
-                        <img src="images/pay8.png" alt="">
+                        <img src="dtml/images/pay8.png" alt="">
                     </li>
                     <li>
-                        <img src="images/pay9.png" alt="">
+                        <img src="dtml/images/pay9.png" alt="">
                     </li>
                 </ul>
             </div>
@@ -1036,11 +1042,11 @@
 
 	<!-- js-files -->
 	<!-- jquery -->
-	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="dtml/js/jquery-2.1.4.min.js"></script>
 	<!-- //jquery -->
 
 	<!-- popup modal (for signin & signup)-->
-	<script src="js/jquery.magnific-popup.js"></script>
+	<script src="dtml/js/jquery.magnific-popup.js"></script>
 	<script>
 		$(document).ready(function () {
 			$('.popup-with-zoom-anim').magnificPopup({
@@ -1064,7 +1070,7 @@
 	<!-- //popup modal (for signin & signup)-->
 
 	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
+	<script src="dtml/js/minicart.js"></script>
 	<script>
 		paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
 
@@ -1088,7 +1094,7 @@
 	<!-- //cart-js -->
 
 	<!-- price range (top products) -->
-	<script src="js/jquery-ui.js"></script>
+	<script src="dtml/js/jquery-ui.js"></script>
 	<script>
 		//<![CDATA[ 
 		$(window).load(function () {
@@ -1108,7 +1114,7 @@
 	<!-- //price range (top products) -->
 
 	<!-- flexisel (for special offers) -->
-	<script src="js/jquery.flexisel.js"></script>
+	<script src="dtml/js/jquery.flexisel.js"></script>
 	<script>
 		$(window).load(function () {
 			$("#flexiselDemo1").flexisel({
@@ -1158,12 +1164,12 @@
 	<!-- //password-script -->
 
 	<!-- smoothscroll -->
-	<script src="js/SmoothScroll.min.js"></script>
+	<script src="dtml/js/SmoothScroll.min.js"></script>
 	<!-- //smoothscroll -->
 
 	<!-- start-smooth-scrolling -->
-	<script src="js/move-top.js"></script>
-	<script src="js/easing.js"></script>
+	<script src="dtml/js/move-top.js"></script>
+	<script src="dtml/js/easing.js"></script>
 	<script>
 		jQuery(document).ready(function ($) {
 			$(".scroll").click(function (event) {
@@ -1197,7 +1203,7 @@
 	<!-- //smooth-scrolling-of-move-up -->
 
 	<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
+	<script src="dtml/js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
 

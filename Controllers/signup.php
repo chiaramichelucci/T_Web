@@ -1,15 +1,41 @@
 <?php
 require "../PDO/database.php";
 require "../Data/user.php";
+require "../include/template2.inc.php";
 
+$failed = false;
 
-if (isset($_POST['submit'])) {     //controllo valori nella richiesta  
-
-    $name = (isset( $_POST['name']) && !empty($_POST['name'])) ? $_POST['name'] : $msg = "niente name";
-    $cogname = (isset( $_POST['cogname']) && !empty($_POST['cogname'])) ? $_POST['cogname'] : $msg = "niente cogname";
-    $password = (isset( $_POST['password']) && !empty($_POST['password'])) ? $_POST['password'] : $msg = "niente password";
-    $email = (isset( $_POST['email']) && !empty($_POST['email'])) ? $_POST['email'] : $msg = "niente email";
-    $data_nascita = (isset( $_POST['dataNascita']) && !empty($_POST['dataNascita'])) ? $_POST['dataNascita'] : $msg = "niente data nascita";
+while(!$failed){
+    if(isset( $_POST['Nome']) && !empty($_POST['Nome'])){
+        $name = $_POST['Nome'];
+    }else{
+        $msg = "niente name";
+        $failed = true;
+    }
+    if(isset( $_POST['Cognome']) && !empty($_POST['Cognome'])){
+        $cognome = $_POST['Cognome'];
+    }else{
+        $msg = "niente cognome";
+        $failed = true;
+    }
+    if(isset( $_POST['password']) && !empty($_POST['password'])){
+       $password = $_POST['password'];
+    }else{
+        $msg = "niente password";
+        $failed = true;
+    }
+    if(isset( $_POST['Email']) && !empty($_POST['Email'])){
+       $email = $_POST['Email'];
+    }else{
+        $msg = "niente email";
+        $failed = true;
+    }
+    if(isset( $_POST['dataNascita']) && !empty($_POST['dataNascita'])){
+        $data_nascita = $_POST['dataNascita'];
+    }else{
+        $msg = "niente data";
+        $failed = true;
+    }
     /*$isUsernameValid = filter_var(  //validazione username          
         $username,
         FILTER_VALIDATE_REGEXP, [
@@ -24,8 +50,12 @@ if (isset($_POST['submit'])) {     //controllo valori nella richiesta
     if ($pwdLenght < 8 || $pwdLenght > 20) { //controllo validità password
         $msg = 'Lunghezza minima password 8 caratteri.
                 Lunghezza massima 20 caratteri';
+        $failed = true;
+        callErrorTemplate($msg);
     } elseif (false === $isEmailValid) { //controllo validità email
         $msg = 'Email non valida.';
+        $failed = true;
+        callErrorTemplate($msg);
     } else {
         $password_hash = password_hash($password, PASSWORD_BCRYPT); //cifratura password
         $database = new Database();
@@ -36,17 +66,25 @@ if (isset($_POST['submit'])) {     //controllo valori nella richiesta
         
         if ($checkEmail) {            //controllo se lo email è già utilizzato
             $msg = 'Email già in uso %s';
+            $failed = true;
+            callErrorTemplate($msg);
         } else {
-            $checkReg = $regUser->registerUser($name, $cogname, $password_hash, $email, $data_nascita);
+            $checkReg = $regUser->registerUser($name, $cognome, $password_hash, $email, $data_nascita);
             $msg = "Registrazione andata a buon fine";
             //if ($checkReg->rowCount() > 0) {
             //    $msg = 'Registrazione eseguita con successo';
             //} 
         }
     }
-} else {
-                $msg = 'Problemi con l\'inserimento dei dati %s';
-           }  
-    printf($msg, '');
+}
+if($failed = true){
+    callErrorTemplate($msg);
+}
 
+        
+    function callErrorTemplate($errore){
+        $error = new Template("../dtml/error.html");
+        $error->setContent("msgError", $errore);
+        $error->close;
+    }
 ?>

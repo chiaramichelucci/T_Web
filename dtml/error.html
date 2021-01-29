@@ -49,7 +49,7 @@
 			<!-- header-bot -->
 			<div class="col-md-8 header">
 				<!-- header lists -->
-				<[userbar]>
+				
 				<!-- //header lists -->
 
 				<!-- search -->
@@ -228,39 +228,11 @@
 		</div>
 	</div>
 	<!-- //navigation -->
-    <div class="container">
-        <h3 class="hdg">Informazioni Utente</h3>
-            <form>
-                <div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Nome</span>
-					<input type="text" class="form-control" placeholder="Nome" aria-describedby="sizing-addon1" readonly value="<[user_nome]>">
-				</div>
-				<div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Cognome</span>
-					<input type="text" class="form-control" placeholder="Cognome" aria-describedby="sizing-addon1" readonly value="<[user_cognome]>">
-				</div>
-				<div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Email</span>
-					<input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" readonly value="<[user_email]>">
-				</div>
-				<input type="submit" name="changeEmail" id="changeEmail" Value="Cambia Email">
-            </form>
-        <h3 class="hdg">Opzioni Spedizione</h3>
-			<form>
-				<[foreach]>
-				<div class="col-lg-6 in-gp-tb">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<input type="radio" aria-label="...">
-						</span>
-						<input type="text" class="form-control" aria-label="...">
-					</div>
-					<!-- /input-group -->
-				</div>
-				<[/foreach]>
-			</form>
-        <h3 class="hdg">Opzioni Pagamento</h3>
+
+	<div class="alert alert-danger" role="alert">
+        <strong>Errore</strong> <[msgErrore]>
     </div>
+	
 	
 	<!-- footer -->
 <footer>
