@@ -60,8 +60,10 @@
             $this->data_nascita = $data_nascita;
         }
 
-        public function checkUser($username, $password){
-            $coso = parent::checkUser($username, $password);
+        public function checkUser($email, $password){
+            print(" dentro check user ");
+            $coso = parent::checkUser($email, $password);
+            print_r($coso);
             if($coso == false){
                 $this->setId(0);
             } else {

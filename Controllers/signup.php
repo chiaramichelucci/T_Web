@@ -57,7 +57,8 @@ while(!$failed){
         $failed = true;
         callErrorTemplate($msg);
     } else {
-        $password_hash = password_hash($password, PASSWORD_BCRYPT); //cifratura password
+        //$password_hash = password_hash($password, PASSWORD_BCRYPT); //cifratura password
+        $password_hash = hash('sha256', $password);
         $database = new Database();
         $pdo = $database->getConnection(); //connessione al database
         $regUser = new User($pdo);
@@ -85,6 +86,6 @@ if($failed = true){
     function callErrorTemplate($errore){
         $error = new Template("../dtml/error.html");
         $error->setContent("msgError", $errore);
-        $error->close;
+        $error->close();
     }
 ?>

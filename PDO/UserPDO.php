@@ -17,7 +17,8 @@
         }  
 
         public function checkUser($email, $password){
-            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+            print(" dentro check userpdo ");
+            $hashedPassword = hash('sha256', $password);
             $sql = "SELECT * FROM " . $this->table_name . " WHERE email = " . "'" . $email . "'" . " AND password = " . "'" .  $hashedPassword . "'";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
@@ -61,6 +62,11 @@
             }
         }
 
+        public function changeEmail($userId, $newEmail){
+            $sql = "UPDATE " . $this->table_name . " SET email = '?' WHERE id = ?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([$newEmail, $userId]);
+        }
     }
 
 ?>

@@ -17,7 +17,7 @@
         }
 
         public function checkGroup($userID){
-            $sql = "SELECT * FROM users_has_groups WHERE id_user = " . "'" . $userID . "'";
+            $sql = "SELECT groups_id FROM users_has_groups WHERE users_id = " . "'" . $userID . "'";
             $stmt = $this->conn->prepare( $sql );
             $stmt->execute();
             $gruppo = $stmt->fetch(PDO::FETCH_ASSOC);

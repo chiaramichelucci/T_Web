@@ -229,54 +229,9 @@
 	</div>
 	<!-- //navigation -->
     <div class="container">
-        <h3 class="hdg">Informazioni Utente</h3>
-            <form action="Controllers/changeEmail.php" method="POST">
-                <div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Nome</span>
-					<input type="text" class="form-control" placeholder="Nome" aria-describedby="sizing-addon1" readonly value="<[user_nome]>">
-				</div>
-				<div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Cognome</span>
-					<input type="text" class="form-control" placeholder="Cognome" aria-describedby="sizing-addon1" readonly value="<[user_cognome]>">
-				</div>
-				<div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Email</span>
-					<input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" readonly value="<[user_email]>">
-				</div>
-				<input type="submit" name="changeEmail" id="changeEmail" Value="Cambia Email">
-            </form>
-        <h3 class="hdg">Opzioni Spedizione</h3>
-			<form>
-				<[foreach]>
-				<div class="col-lg-6 in-gp-tb">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<input type="radio" aria-label="..." name="opzioneSpedizione" id="opzioneSpedizione">
-						</span>
-						<[citta]> , <[via]>, <[numero]>, <[cap]>, <[provincia]>, <[paese]>, <[altre_particolarita]>
-					</div>
-					<!-- /input-group -->
-				</div>
-				<[/foreach]>
-				<input type="button" name="addSped" value="Aggiungi Indirizzo" id="assSped" action="Controllers/addSpedizione.php"/>
-				<input type="submit" name="modSped" value="Modifica o Cancella Indirizzo" id="modSped" action="Controllers/modSpedizione.php"/>
-			</form>
-		<h3 class="hdg">Opzioni Pagamento</h3>
-			<form>
-				<[foreach]>
-				<div class="col-lg-6 in-gp-tb">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<input type="radio" aria-label="..." name="opzionePagamento" id="opzionePagamento">
-						</span>
-						<[numero_carta]> , <[scadenza]>, <[cvv]>, <[nome_proprietario]>
-					</div>
-					<!-- /input-group -->
-				</div>
-				<[/foreach]>
-				<input type="button" name="addPag" value="Aggiungi Pagamento" id="assSped" action="Controllers/addPagamento.php"/>
-				<input type="submit" name="modPag" value="Modifica o Cancella Pagamento" id="modSped" action="Controllers/modPagamento.php"/>
-			</form>
+        <form action="Controllers/cambiaEmail.php" method="POST">
+            <input type="text" name=""
+        </form>>
     </div>
 	
 	<!-- footer -->

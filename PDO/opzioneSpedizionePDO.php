@@ -15,6 +15,13 @@
             $stmt->execute();
             return $stmt;
         }
+
+        public function getOSUser($user){
+            $sql = "SELECT * FROM " . $this->table_name . " WHERE id_user = ?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([$user]);
+            return $stmt;
+        }
     }
 
 ?>
