@@ -6,4 +6,10 @@
   <i>Dragos Stratulat</i> <br>dragoscatalin.stratulat@student.univaq.it<br><br>
   <i>Alessandro Carestia</i><br> alessandro.carestia@student.univaq.it
   <br><br><br>
-  <b>Files:</b><br>
+  <b>Cartelle e Files:</b><br>
+  -<i>Controllers</i> : contiene tutti i controllers del nostro sito <br>
+  -<i>Data</i> : contiene le classi utilizzate <br>
+  -<i>DataBase</i> : file .sql e schema <br>
+  -<i>PDO</i> : contiene i vari PDO utilizzati <br>
+  -<i>dtml</i> : css, fonts, immagini, js e pagine principali del nostro template <br>
+  -<i>include</i> : template utilizzato <br>
