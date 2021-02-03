@@ -60,10 +60,23 @@
             $this->data_nascita = $data_nascita;
         }
 
+        public function getUser($id){
+            print(" dentro get user ");
+            $coso = parent::getUser($id);
+            if($coso == false){
+                $this->setId(0);
+            } else {
+                $this->setId($coso['id']);
+                $this->setNome($coso['nome']);
+                $this->setCognome($coso['cognome']);
+                $this->setEmail($coso['email']);
+                $this->setDataNascita($coso['data_nascita']);
+            }
+        }
+
         public function checkUser($email, $password){
             print(" dentro check user ");
             $coso = parent::checkUser($email, $password);
-            print_r($coso);
             if($coso == false){
                 $this->setId(0);
             } else {

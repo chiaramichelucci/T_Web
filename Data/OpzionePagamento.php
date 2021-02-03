@@ -60,6 +60,11 @@
             $this->id_user = $id_user;
         }
 
+        public function aggiungiOpzionePagamento(){
+            $status = parent::aggiungiOpzionePagamento();
+            return $status;
+        }
+
     }
 
 ?>

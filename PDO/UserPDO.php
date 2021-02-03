@@ -9,12 +9,19 @@
             $this->conn = $db;
         }
 
-        public function getUser(){
-            $sql = "SELECT * FROM " . $this->table_name;
+        public function getUser($userId){
+            $sql = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
             $stmt = $this->conn->prepare( $sql );
-            $stmt->execute();
-            return $stmt;
-        }  
+            $stmt->execute([$userId]);
+            $num = $stmt->rowCount();
+            print_r($num);
+            if($num == 0){
+                return false;
+            } else {
+                $utente = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $utente;
+            }
+        } 
 
         public function checkUser($email, $password){
             print(" dentro check userpdo ");
@@ -23,6 +30,7 @@
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             $num = $stmt->rowCount();
+            print_r($num);
             if($num == 0){
                 return false;
             } else {
@@ -63,9 +71,9 @@
         }
 
         public function changeEmail($userId, $newEmail){
-            $sql = "UPDATE " . $this->table_name . " SET email = '?' WHERE id = ?";
+            $sql = "UPDATE " . $this->table_name . " SET email = '" . $newEmail . "' WHERE id = " . $userId;
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute([$newEmail, $userId]);
+            $stmt->execute();
         }
     }
 

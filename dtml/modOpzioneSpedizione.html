@@ -229,54 +229,38 @@
 	</div>
 	<!-- //navigation -->
     <div class="container">
-        <h3 class="hdg">Informazioni Utente</h3>
-            <form action="Controllers/changeEmail.php" method="POST">
-                <div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Nome</span>
-					<input type="text" class="form-control" placeholder="Nome" aria-describedby="sizing-addon1" readonly value="<[user_nome]>">
-				</div>
-				<div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Cognome</span>
-					<input type="text" class="form-control" placeholder="Cognome" aria-describedby="sizing-addon1" readonly value="<[user_cognome]>">
-				</div>
-				<div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Email</span>
-					<input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" readonly value="<[user_email]>">
-				</div>
-				<input type="button" onclick="location.href='changeEmail.php'" name="changeEmail" id="changeEmail" Value="Cambia Email">
-            </form>
-        <h3 class="hdg">Opzioni Spedizione</h3>
-			<form action="Controllers/modSpedizione.php" method="POST">
-				<[foreach]>
-				<div class="col-lg-6 in-gp-tb">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<input type="radio" aria-label="..." name="opzioneSpedizione" id="opzioneSpedizione" value="<[id_spedizione]>">
-						</span>
-						<[citta]> , <[via]>, <[numero]>, <[cap]>, <[provincia]>, <[paese]>, <[altre_particolarita]>
-					</div>
-					<!-- /input-group -->
-				</div>
-				<[/foreach]>
-				<input type="button" name="addSped" value="Aggiungi Indirizzo" id="assSped"  onclick="location.href='addSpedizione.php'"/>
-				<input type="submit" name="modSped" value="Modifica o Cancella Indirizzo" id="modSped"/>
-			</form>
-		<h3 class="hdg">Opzioni Pagamento</h3>
-			<form action="Controllers/modPagamento.php" method="POST">
-				<[foreach]>
-				<div class="col-lg-6 in-gp-tb">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<input type="radio" aria-label="..." name="opzionePagamento" id="opzionePagamento" value="<[id_pagamento]>">
-						</span>
-						<[numero_carta]> , <[scadenza]>, <[cvv]>, <[nome_proprietario]>
-					</div>
-					<!-- /input-group -->
-				</div>
-				<[/foreach]>
-				<input type="button" name="addPag" value="Aggiungi Pagamento" id="assSped" onclick="location.href='addPagamento.php'"/>
-				<input type="submit" name="modPag" value="Modifica o Cancella Pagamento" id="modSped" />
-			</form>
+        <form action="Controllers/modOptionSped.php" method="POST">
+                <input type="text" class="form-control" placeholder="id" aria-describedby="sizing-addon1" name="id" id="id" value="<[op_id]>" disabled>
+            <div class="input-group input-group-lg w3_w3layouts">
+                <span class="input-group-addon" id="sizing-addon1">Citta</span>
+                <input type="text" class="form-control" placeholder="Citta" aria-describedby="sizing-addon1" name="citta" id="citta" value="<[op_citta]>">
+            </div>
+            <div class="input-group input-group-lg w3_w3layouts">
+                <span class="input-group-addon" id="sizing-addon1">Via</span>
+                <input type="text" class="form-control" placeholder="Via" aria-describedby="sizing-addon1" name="via" id="via" value="<[op_via]>">
+            </div>
+            <div class="input-group input-group-lg w3_w3layouts">
+                <span class="input-group-addon" id="sizing-addon1">Numero Civico</span>
+                <input type="text" class="form-control" placeholder="Numero Civico" aria-describedby="sizing-addon1" name="ncivico" id="ncivico" value="<[op_ncivico]>">
+            </div>
+            <div class="input-group input-group-lg w3_w3layouts">
+                <span class="input-group-addon" id="sizing-addon1">CAP</span>
+                <input type="text" class="form-control" placeholder="CAP" aria-describedby="sizing-addon1" name="cap" id="cap" value="<[op_cap]>">
+            </div>
+            <div class="input-group input-group-lg w3_w3layouts">
+                <span class="input-group-addon" id="sizing-addon1">Provincia</span>
+                <input type="text" class="form-control" placeholder="Provincia" aria-describedby="sizing-addon1" name="prov" id="prov" value="<[op_prov]>">
+            </div>
+            <div class="input-group input-group-lg w3_w3layouts">
+                <span class="input-group-addon" id="sizing-addon1">Paese</span>
+                <input type="text" class="form-control" placeholder="Paese" aria-describedby="sizing-addon1" name="paese" id="paese" value="<[op_paese]>">
+            </div>
+            <div class="input-group input-group-lg w3_w3layouts">
+                <span class="input-group-addon" id="sizing-addon1">Altre Particolarita</span>
+                <input type="text" class="form-control" placeholder="Altre particolarita" aria-describedby="sizing-addon1" name="particolarita" id="particolarita" value="<[op_particolarita]>">
+            </div>
+            <input type="submit" name="modSped" id="modSped" value="Aggiungi Indirizzo di Spedizione" />
+        </form>
     </div>
 	
 	<!-- footer -->

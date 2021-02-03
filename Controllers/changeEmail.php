@@ -1,5 +1,7 @@
 <?php
 
+require "../include/template2.inc.php";
+
     session_start();
 
     $main = new Template("../dtml/changeEmail.html");
@@ -17,5 +19,8 @@
         $bar = new Template("../dtml/userBarAdmin.html");
         $main->setContent("userbar", $bar->get());
     }
+
+    $main->setContent("user_email", $_SESSION['user_email']);
+    $main->close();
 
 ?>

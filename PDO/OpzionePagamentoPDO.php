@@ -23,6 +23,13 @@
             return $stmt;
         }
 
+        public function aggiungOpzioneSpedizione(){
+            $sql = "INSERT INTO " . $this->table_name . "(numero_carta, scadenza ,cvv, nome_proprietario, id_user) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(array($this->numero_carta, $this->scadenza, $this->cvv, $this->nome_proprietario, $this->id_utente));
+            return $stmt;
+        }
+
     }
 
 ?>

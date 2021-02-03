@@ -17,6 +17,14 @@
             parent::__construct($db);
         }
 
+        public function getID(){
+            return $this->id;
+        }
+
+        public function setID($id){
+            $this->id = $id;
+        }
+
         public function getCitta(){
             return $this->citta;
         }
@@ -81,6 +89,37 @@
             $this->id_utente = $id_utente;
         }
 
+        public function aggiungiOpzioneSpedizione(){
+            $status = parent::aggiungiOpzioneSpedizione();
+            return $status;
+        }
+
+        public function getOpzione($id){
+            $opzione = parent::getOpzione($id);
+            if($opzione == false){
+                $this->setId(0);
+            } else {
+                $this->setID($coso['id']);
+                $this->setCitta($coso['citta']);
+                $this->setVia($coso['via']);
+                $this->setNumero($coso['numero']);
+                $this->setCap($coso['cap']);
+                $this->setProvincia($coso['provincia']);
+                $this->setPaese($coso['paese']);
+                $this->setAltreParticolarita($coso['altre_particolarita']);
+                $this->setIdUtente($coso['id_user']);
+            }
+        }
+
+        public function modificaOpzionoSpedizione($id){
+            $status = parent::modificaOpzionoSpedizione($id);
+            return $status;
+        }
+
+        public function cancellaOpzioneSpedizione($id){
+            $status = parent::cancellaOpzioneSpedizione($id);
+            return $status;
+        }
 
     }
 

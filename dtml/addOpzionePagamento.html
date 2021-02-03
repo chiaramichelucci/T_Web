@@ -229,54 +229,25 @@
 	</div>
 	<!-- //navigation -->
     <div class="container">
-        <h3 class="hdg">Informazioni Utente</h3>
-            <form action="Controllers/changeEmail.php" method="POST">
-                <div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Nome</span>
-					<input type="text" class="form-control" placeholder="Nome" aria-describedby="sizing-addon1" readonly value="<[user_nome]>">
-				</div>
-				<div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Cognome</span>
-					<input type="text" class="form-control" placeholder="Cognome" aria-describedby="sizing-addon1" readonly value="<[user_cognome]>">
-				</div>
-				<div class="input-group input-group-lg w3_w3layouts">
-					<span class="input-group-addon" id="sizing-addon1">Email</span>
-					<input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" readonly value="<[user_email]>">
-				</div>
-				<input type="button" onclick="location.href='changeEmail.php'" name="changeEmail" id="changeEmail" Value="Cambia Email">
-            </form>
-        <h3 class="hdg">Opzioni Spedizione</h3>
-			<form action="Controllers/modSpedizione.php" method="POST">
-				<[foreach]>
-				<div class="col-lg-6 in-gp-tb">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<input type="radio" aria-label="..." name="opzioneSpedizione" id="opzioneSpedizione" value="<[id_spedizione]>">
-						</span>
-						<[citta]> , <[via]>, <[numero]>, <[cap]>, <[provincia]>, <[paese]>, <[altre_particolarita]>
-					</div>
-					<!-- /input-group -->
-				</div>
-				<[/foreach]>
-				<input type="button" name="addSped" value="Aggiungi Indirizzo" id="assSped"  onclick="location.href='addSpedizione.php'"/>
-				<input type="submit" name="modSped" value="Modifica o Cancella Indirizzo" id="modSped"/>
-			</form>
-		<h3 class="hdg">Opzioni Pagamento</h3>
-			<form action="Controllers/modPagamento.php" method="POST">
-				<[foreach]>
-				<div class="col-lg-6 in-gp-tb">
-					<div class="input-group">
-						<span class="input-group-addon">
-							<input type="radio" aria-label="..." name="opzionePagamento" id="opzionePagamento" value="<[id_pagamento]>">
-						</span>
-						<[numero_carta]> , <[scadenza]>, <[cvv]>, <[nome_proprietario]>
-					</div>
-					<!-- /input-group -->
-				</div>
-				<[/foreach]>
-				<input type="button" name="addPag" value="Aggiungi Pagamento" id="assSped" onclick="location.href='addPagamento.php'"/>
-				<input type="submit" name="modPag" value="Modifica o Cancella Pagamento" id="modSped" />
-			</form>
+        <form action="Controllers/addOptionPay.php" method="POST">
+            <div class="input-group input-group-lg w3_w3layouts">
+                <span class="input-group-addon" id="sizing-addon1">Nr. Carta</span>
+                <input type="text" class="form-control" placeholder="Nr. Carta" aria-describedby="sizing-addon1" name="ncarta" id="ncarta">
+            </div>
+            <div class="input-group input-group-lg w3_w3layouts">
+                <span class="input-group-addon" id="sizing-addon1">Scadenza</span>
+                <input type="text" class="form-control" placeholder="Scadenza" aria-describedby="sizing-addon1" name="scadenza" id="scadenza">
+            </div>
+            <div class="input-group input-group-lg w3_w3layouts">
+                <span class="input-group-addon" id="sizing-addon1">CVV</span>
+                <input type="text" class="form-control" placeholder="CVV" aria-describedby="sizing-addon1" name="cvv" id="cvv">
+            </div>
+            <div class="input-group input-group-lg w3_w3layouts">
+                <span class="input-group-addon" id="sizing-addon1">Nome Proprietario</span>
+                <input type="text" class="form-control" placeholder="Nome Proprietario" aria-describedby="sizing-addon1" name="nprop" id="nprop">
+            </div>
+            <input type="submit" name="addSped" id="addSped" value="Aggiungi Indirizzo di Spedizione" />
+        </form>
     </div>
 	
 	<!-- footer -->
