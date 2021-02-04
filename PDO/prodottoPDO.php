@@ -19,7 +19,7 @@
         public function getNProd($limit, $page){
             $sql = "SELECT * FROM " . $this->table_name . "LIMIT " . $page . " , " . $limit;
             $stmt = $this->conn->prepare( $sql );
-            $stmt->execute();
+            $status = $stmt->execute();
             return $stmt;
         }
 

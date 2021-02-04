@@ -55,5 +55,5 @@ while (!$failed) {
         $error->close();
     }
 
-
+}
 ?>
