@@ -8,7 +8,6 @@
         public $stato;
         public $data;     
         public $id_user;
-        public $id_carrello;   
 
         public function __construct($db) {
             parent::__construct($db);
@@ -34,10 +33,6 @@
             return $this->id_user;
         }
 
-        public function getIdCarrello(){
-            return $this->id_carrello;
-        }
-
         public function setId($id){
             $this->id = $id;
         }
@@ -58,8 +53,18 @@
             $this->id_user;
         }
 
-        public function setIdCarrello(){
-            $this->id_carrello;
+        public function getOrdine($id){
+            $ord = parent::getId($id);
+            if($ord == false){
+                $this->setId(0);
+            } else {
+                $this->setId($ord['id']);
+                $this->setTotale($ord['totale']);
+                $this->setStato($ord['stato']);
+                $this->setData($ord['data']);
+                $this->setIdUser($ord['id_user']);
+
+            }
         }
     }
 

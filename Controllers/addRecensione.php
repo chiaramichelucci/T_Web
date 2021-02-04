@@ -5,6 +5,7 @@ require "../Data/prodotto.php";
 require "../Data/recensione.php";
 require "../include/template2.inc.php";
 
+$main = new Template("../dtml/singoloProdotto.html");
 
 $failed = false;
 
@@ -37,8 +38,8 @@ while (!$failed) {
     $user = new User($db);
     $addRec = new Recensione($db);
 
-    $id_prod = $prodotto->getByProdId($prodotto->id);
-    $id_user = $user->getByUserId($user->id);
+    $id_user = $user->getUser($_SESSION['user_id']);
+    $id_prod = $prod->getProdotto($_SESSION['prodotto_id']);
 
     $rec = $addRec->addRecens($id_user, $id_prod, $titolo, $voto, $testo);
     $msg = "Recensione inserita correttamente!";
@@ -54,6 +55,8 @@ while (!$failed) {
         $error->setContent("msgError", $errore);
         $error->close();
     }
+
+    $main->close();
 
 }
 ?>
