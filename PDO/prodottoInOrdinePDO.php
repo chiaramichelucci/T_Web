@@ -1,18 +1,18 @@
 <?php 
 
-    class DettagliNutrizionaliPDO{
+    class ProdottoInOrdinePDO{
 
         protected $conn;
-        protected $table_name = "dettagli_nutrizionali";
+        protected $table_name = "prodotto_in_ordine";
 
         public function __construct($db){
             $this->conn = $db;
         }
 
-        public function getDettagliN($idProdotto){​​
-            $sql = "SELECT * FROM " . $this->table_name . " WHERE id_prodotto = ?";
+        public function getProdottoInOrdine($ordineId){​​
+            $sql = "SELECT * FROM " . $this->table_name . " WHERE id_ordine = ?";
             $stmt = $this->conn->prepare( $sql );
-            $stmt->execute([$idProdotto]);
+            $stmt->execute([$ordineId]);
             return $stmt;
         }
 

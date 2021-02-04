@@ -21,8 +21,7 @@
     $rec = new Recensione($db);
     $dettN = new DettagliNutrizionali($db);
 
-    //non hai l'id del prodotto quindi lo devi ottenere da qualche parte
-    //$id = print_r($data['id'], true);  //fai un $_POST['id'] che prende l'id del prodotto che lo mando io dalla pagina dei prodotti
+    $id_prod = $prod->getProdotto($_SESSION['prodotto_id']);
 
 	$img = $images->getByProdId($id);
 	$numImg = $img->rowCount();
@@ -35,8 +34,6 @@
 	foreach($data as $key => $value) {
 		$card->setContent($key, $value);
 	}
-    
-    $lot = $lotto -> getByProdId($id);  //non serve il lotto per la pagina di presentazione di un prodotto
 
     $recens = $rec -> getByProdId($id);
     $numRec = $rec->rowCount();
@@ -48,15 +45,14 @@
     //voglio visualizzare le recensioni sotto forma di griglia 
     //(titolo con stelle e sotto commento)
 
-    $dn = $dettN -> getByProdId($id);  //definisci la funzione perche non esiste
+    $dn = $dettN->getDettagliN($_SESSION['prodotto_id']);
     //voglio visualizzare i dettagli nutrizionali sotto forma di tabella
     //qua devi prendere il result set dalla querry e fare nometemplate->setContent("nometag", $var) per ogni 
 
     //seleziono l'id del produttore dalla tabella prodotto
     //e prendo il link del sito
-    //devi implementare le funzioni dentro produttore e PDO per fare la query per ottenere queste
-    $produttore = print_r($data['id_produttore'], true); 
-    $link = $prod -> getByProdId($produttore);
+    //implementare le funzioni dentro produttore e PDO per fare la query per ottenere queste
+
 
     $main->close();
 ?>

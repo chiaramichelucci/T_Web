@@ -17,6 +17,14 @@
             parent::__construct($db);
         }
 
+        public function getId(){
+            return $this->id;
+        }
+
+        public function setId($id){
+            $this->id = $id;
+        }
+
         public function getCitta(){
             return $this->citta;
         }
@@ -80,7 +88,24 @@
         public function setIdOrdine($id_ordine){
             $this->id_ordine = $id_ordine;
         }
+  
+        public function getInfoSped($id){
+            $is = parent::getId($id);
+            if($is == false){
+                $this->setId(0);
+            } else {
+                $this->setId($is['id']);
+                $this->setCitta($is['citta']);
+                $this->setVia($is['via']);
+                $this->setNumero($is['numero']);
+                $this->setCap($is['cap']);
+                $this->setProvincia($is['provincia']);
+                $this->setPaese($is['paese']);
+                $this->setAltreParticolarita($is['altre_particolarita']);
+                $this->setIdOrdine($is['id_ordine']);
 
+            }
+        }
 
     }
 

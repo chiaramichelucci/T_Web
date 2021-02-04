@@ -63,6 +63,21 @@
             $this->cvv = $cvv;
         }
 
+        public function getInfoPag($id){
+            $ip = parent::getId($id);
+            if($ip == false){
+                $this->setId(0);
+            } else {
+                $this->setId($ip['id']);
+                $this->setIdOrdine($ip['id_ordine']);
+                $this->setModalita($ip['modalita']);
+                $this->setNumeroCarta($ip['numero_carta']);
+                $this->setScadenza($ip['scadenza']);
+                $this->setCvv($ip['cvv']);
+                
+            }
+        }
+
     }
 
 ?>

@@ -35,6 +35,17 @@
             $this->id_user = $id_user;
         }
 
+        public function getCerrello($id){
+            $carr = parent::getId($id);
+            if($carr == false){
+                $this->setId(0);
+            } else {
+                $this->setId($carr['id']);
+                $this->setIdProdotto($carr['id_prodotto']);
+                $this->setIdUser($carr['id_user']);
+            }
+        }
+
     }
 
 ?>

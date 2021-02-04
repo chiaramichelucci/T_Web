@@ -97,6 +97,25 @@
         public function setSodio(){
             $this->sodio;
         }
+
+        public function getDettagliN($id){
+            $dn = parent::getId($id);
+            if($dn == false){
+                $this->setId(0);
+            } else {
+                $this->setId($dn['id']);
+                $this->setIdProdotto($dn['id_prodotto']);
+                $this->setEnergia($dn['energia']);
+                $this->setGrassi($dn['grassi']);
+                $this->setCarboidrati($dn['carboidrati']);
+                $this->setProteine($dn['proteine']);
+                $this->setSale($dn['sale']);
+                $this->setAnidriteCarbonica($dn['anidrite_carbonica']);
+                $this->setCalcio($dn['calcio']);
+                $this->setSodio($dn['sodio']);
+
+            }
+        }
     }
 
 ?>

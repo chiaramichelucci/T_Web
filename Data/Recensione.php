@@ -60,6 +60,21 @@
             $this->testo = $testo;
         }
 
+        public function getRecensione($id){
+            $rec = parent::getId($id);
+            if($rec == false){
+                $this->setId(0);
+            } else {
+                $this->setId($rec['id']);
+                $this->setIdProdotto($rec['id_prodotto']);
+                $this->setIdUser($rec['id_user']);
+                $this->setTitolo($rec['titolo']);
+                $this->setVoto($rec['voto']);
+                $this->setTesto($rec['testo']);
+
+            }
+        }
+
     }
 
 ?>
