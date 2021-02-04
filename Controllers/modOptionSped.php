@@ -11,13 +11,12 @@
         $msg = "Non hai accesso a questa pagina";
         $error->setContent("msgError", $msg);
         $error->close();
-    } elseif($_SESSION['user_group'] == 2) {
-        $bar = new Template("../dtml/userBarGeneric.html");
-        $main->setContent("userbar", $bar->get());
-    } else {
-        $bar = new Template("../dtml/userBarAdmin.html");
-        $main->setContent("userbar", $bar->get());
     }
+
+    $database = new Database();
+    $db = $database->getConnection();
+    $opS = new OpzioneSpedizione($db);
+    $opS->setId($POST['id']);
 
     if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])){
         $opS->setIdUtente($_SESSION['user_id']);
@@ -27,11 +26,6 @@
         $error->close();
     }
 
-    $database = new Database();
-    $db = $database->getConnection();
-    $opS = new OpzioneSpedizione($db);
-    $opS->setId($_POST['id']);
-
     if(isset($_POST['citta'])) {
         $opS->setCitta($_POST['citta']);
     } elseif(empty($_POST['citta'])) {
@@ -39,39 +33,39 @@
     }
 
     if(isset($_POST['via'])) {
-        $opS->setCitta($_POST['via']);
+        $opS->setVia($_POST['via']);
     } elseif(empty($_POST['via'])) {
-        $opS->setCitta("");
+        $opS->setVia("");
     }
 
     if(isset($_POST['ncivico'])) {
-        $opS->setCitta($_POST['ncivico']);
+        $opS->setNumero($_POST['ncivico']);
     } elseif(empty($_POST['ncivico'])) {
-        $opS->setCitta("");
+        $opS->setNumero("");
     }
 
     if(isset($_POST['cap'])) {
-        $opS->setCitta($_POST['cap']);
+        $opS->setCap($_POST['cap']);
     } elseif(empty($_POST['cap'])) {
-        $opS->setCitta("");
+        $opS->setCap("");
     }
 
     if(isset($_POST['prov'])) {
-        $opS->setCitta($_POST['prov']);
+        $opS->setProvincia($_POST['prov']);
     } elseif(empty($_POST['prov'])) {
-        $opS->setCitta("");
+        $opS->setProvincia("");
     }
 
     if(isset($_POST['paese'])) {
-        $opS->setCitta($_POST['paese']);
+        $opS->setPaese($_POST['paese']);
     } elseif(empty($_POST['paese'])) {
-        $opS->setCitta("");
+        $opS->setPaese("");
     }
 
     if(isset($_POST['particolarita'])) {
-        $opS->setCitta($_POST['particolarita']);
+        $opS->setAltreParticolarita($_POST['particolarita']);
     } elseif(empty($_POST['particolarita'])) {
-        $opS->setCitta("");
+        $opS->setAltreParticolarita("");
     }
 
     if($opS->getCitta() == "" &&
@@ -87,12 +81,12 @@
         $status = $opS->modificaOpzioneSpedizione($opS->getID());
     }
 
-    if($status){
+    /*if($status){
         header("Location: ../Controllers/userProfile.php");
     }else{
         $msg = "Modifica falita";
         $error->setContent("msgError", $msg);
         $error->close();
-    }
+    }*/
 
 ?>

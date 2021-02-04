@@ -25,8 +25,8 @@
     $db = $database->getConnection();
     $opS = new OpzioneSpedizione($db);
 
-    if(isset($_POST['id_spedizione']) && !empty($_POST['id_spedizione'])){
-        $opS->getOpzione($_POST['id_spedizione']);
+    if(isset($_POST['opzioneSpedizione']) && !empty($_POST['opzioneSpedizione'])){
+        $opS->getOpzione($_POST['opzioneSpedizione']);
 
         $main->setContent("op_id", $opS->getID());
         $main->setContent("op_citta", $opS->getCitta());
@@ -38,7 +38,7 @@
         $main->setContent("op_particolarita", $opS->getAltreParticolarita());
         $main->close();
     } else {
-        $error->setContent("msgError", "Devi selezionare una delle opzioni di spedizione");
+        $error->setContent("msgErrore", "Devi selezionare una delle opzioni di spedizione");
         $error->close();
     }
 

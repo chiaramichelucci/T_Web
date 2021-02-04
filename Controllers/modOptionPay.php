@@ -1,6 +1,5 @@
 <?php
 
-    require "../Data/user.php";
     require "../Data/opzionePagamento.php";
     require "../PDO/database.php";
     require "../include/template2.inc.php";
@@ -14,10 +13,10 @@
         $error->close();
     }
 
-
     $database = new Database();
     $db = $database->getConnection();
     $opP = new OpzionePagamento($db);
+    $opP->setID($_POST['id']);
 
     if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])){
         $opP->setIdUser($_SESSION['user_id']);
@@ -27,46 +26,47 @@
         $error->close();
     }
 
-    if(isset($_POST['ncarta']) && !empty($_POST['ncarta'])) {
-        $opP->setNumeroCarta($_POST['ncarta']);
-    } else {
-        $msg = "Non hai inserito il numero carta";
-        $error->setContent("msgError", $msg);
-        $error->close();
+    if(isset($_POST['numero'])) {
+        $opP->setNumeroCarta($_POST['numero']);
+    } elseif(empty($_POST['cinumerotta'])) {
+        $opP->setNumeroCarta("");
     }
 
-    if(isset($_POST['scadenza']) && !empty($_POST['scadenza'])) {
-        $opP->setScadenza($_POST['scadenza']);
-    } else {
-        $msg = "Non hai inserito la scadenza";
-        $error->setContent("msgError", $msg);
-        $error->close();
-    }
-
-    if(isset($_POST['cvv']) && !empty($_POST['cvv'])) {
+    if(isset($_POST['cvv'])) {
         $opP->setCvv($_POST['cvv']);
-    } else {
-        $msg = "Non hai inserito il cvv ";
-        $error->setContent("msgError", $msg);
-        $error->close();
+    } elseif(empty($_POST['cvv'])) {
+        $opP->setCvv("");
     }
 
-    if(isset($_POST['nprop']) && !empty($_POST['nprop'])) {
-        $opP->setNomeProprietario($_POST['nprop']);
-    } else {
-        $msg = "Non hai inserito il nome proprietario";
-        $error->setContent("msgError", $msg);
-        $error->close();
+    if(isset($_POST['scadenza'])) {
+        $opP->setScadenza($_POST['scadenza']);
+    } elseif(empty($_POST['scadenza'])) {
+        $opP->setScadenza("");
     }
 
-    $status = $opP->aggiungiOpzionePagamento();
+    if(isset($_POST['nome'])) {
+        $opP->setNomeProprietario($_POST['nome']);
+    } elseif(empty($_POST['nome'])) {
+        $opP->setNomeProprietario("");
+    }
+
+
+    if($opP->getNumeroCarta() == "" &&
+       $opP->getCvv() == "" &&
+       $opP->getScadenza() == "" &&
+       $opP->getNomeProprietario() == "")
+    {
+        $status = $opP->cancellaOpzionePagamento($opP->getID());
+    } else {
+        $status = $opP->modificaOpzionePagamento($opP->getID());
+    }
+
     if($status){
         header("Location: ../Controllers/userProfile.php");
     }else{
-        $msg = "Inserimento falito";
+        $msg = "Modifica falita";
         $error->setContent("msgError", $msg);
         $error->close();
     }
 
-    
 ?>

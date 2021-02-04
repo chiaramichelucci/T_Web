@@ -246,7 +246,7 @@
 				<input type="button" onclick="location.href='changeEmail.php'" name="changeEmail" id="changeEmail" Value="Cambia Email">
             </form>
         <h3 class="hdg">Opzioni Spedizione</h3>
-			<form action="Controllers/modSpedizione.php" method="POST">
+			<form action="modSpedizione.php" method="POST">
 				<[foreach]>
 				<div class="col-lg-6 in-gp-tb">
 					<div class="input-group">
@@ -262,7 +262,7 @@
 				<input type="submit" name="modSped" value="Modifica o Cancella Indirizzo" id="modSped"/>
 			</form>
 		<h3 class="hdg">Opzioni Pagamento</h3>
-			<form action="Controllers/modPagamento.php" method="POST">
+			<form action="modPagamento.php" method="POST">
 				<[foreach]>
 				<div class="col-lg-6 in-gp-tb">
 					<div class="input-group">
@@ -274,8 +274,8 @@
 					<!-- /input-group -->
 				</div>
 				<[/foreach]>
-				<input type="button" name="addPag" value="Aggiungi Pagamento" id="assSped" onclick="location.href='addPagamento.php'"/>
-				<input type="submit" name="modPag" value="Modifica o Cancella Pagamento" id="modSped" />
+				<input type="button" name="addPag" value="Aggiungi Pagamento" id="assPay" onclick="location.href='addPagamento.php'"/>
+				<input type="submit" name="modPag" value="Modifica o Cancella Pagamento" id="modPay" />
 			</form>
     </div>
 	

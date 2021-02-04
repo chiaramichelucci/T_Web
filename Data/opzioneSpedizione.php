@@ -95,19 +95,20 @@
         }
 
         public function getOpzione($id){
-            $opzione = parent::getOpzione($id);
+            $coso = parent::getOpzione($id);
+            $opzione = $coso->fetch(PDO::FETCH_ASSOC);
             if($opzione == false){
                 $this->setId(0);
             } else {
-                $this->setID($coso['id']);
-                $this->setCitta($coso['citta']);
-                $this->setVia($coso['via']);
-                $this->setNumero($coso['numero']);
-                $this->setCap($coso['cap']);
-                $this->setProvincia($coso['provincia']);
-                $this->setPaese($coso['paese']);
-                $this->setAltreParticolarita($coso['altre_particolarita']);
-                $this->setIdUtente($coso['id_user']);
+                $this->setID($opzione['id']);
+                $this->setCitta($opzione['citta']);
+                $this->setVia($opzione['via']);
+                $this->setNumero($opzione['numero']);
+                $this->setCap($opzione['cap']);
+                $this->setProvincia($opzione['provincia']);
+                $this->setPaese($opzione['paese']);
+                $this->setAltreParticolarita($opzione['altre_particolarita']);
+                $this->setIdUtente($opzione['id_user']);
             }
         }
 

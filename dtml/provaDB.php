@@ -33,6 +33,13 @@
                 // paging buttons will be here
             }
 
+            public function getOrdine($userId){​​
+                $sql = "SELECT * FROM " . $this->table_name . " WHERE user_id = ?";
+                $stmt = $this->conn->prepare( $sql );
+                $stmt->execute([$userId]);
+                return $stmt;
+            }​​
+
         ?>
     </body>
 </html>

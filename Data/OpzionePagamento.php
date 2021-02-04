@@ -14,7 +14,7 @@
             parent::__construct($db);
         }
 
-        public function getId(){
+        public function getID(){
             return $this->id;
         }
 
@@ -37,11 +37,11 @@
             return $this->nome;
         }
 
-        public function setId($id){
+        public function setID($id){
             $this->id = $id;
         }
 
-        public function setNumeroProdotto($numero_carta){
+        public function setNumeroCarta($numero_carta){
             $this->numero_carta = $numero_carta;
         }
 
@@ -64,6 +64,31 @@
             $status = parent::aggiungiOpzionePagamento();
             return $status;
         }
+
+        public function getOpzione($id){
+            $coso = parent::getOpzione($id);
+            $opzione = $coso->fetch(PDO::FETCH_ASSOC);
+            if($opzione == false){
+                $this->setId(0);
+            } else {
+                $this->setID($opzione['id']);
+                $this->setNumeroCarta($opzione['numero_carta']);
+                $this->setScadenza($opzione['scadenza']);
+                $this->setCvv($opzione['cvv']);
+                $this->setNomeProprietario($opzione['nome_proprietario']);
+            }
+        }
+
+        public function modificaOpzionoPagamento($id){
+            $status = parent::modificaOpzionoPagamento($id);
+            return $status;
+        }
+
+        public function cancellaOpzionePagamento($id){
+            $status = parent::cancellaOpzionePagamento($id);
+            return $status;
+        }
+
 
     }
 

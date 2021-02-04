@@ -229,38 +229,26 @@
 	</div>
 	<!-- //navigation -->
     <div class="container">
-        <form action="modOptionSped.php" method="POST">
-                <input type="text" class="form-control" placeholder="id" aria-describedby="sizing-addon1" name="id" id="id" value="<[op_id]>" readonly>
+        <form action="modOptionPay.php" method="POST">
+                <input type="text" class="form-control" placeholder="id" aria-describedby="sizing-addon1" name="id" id="id" value="<[op_id]>" hidden readonly>
             <div class="input-group input-group-lg w3_w3layouts">
-                <span class="input-group-addon" id="sizing-addon1">Citta</span>
-                <input type="text" class="form-control" placeholder="Citta" aria-describedby="sizing-addon1" name="citta" id="citta" value="<[op_citta]>">
+                <span class="input-group-addon" id="sizing-addon1">Numero Carta</span>
+                <input type="text" class="form-control" placeholder="Numero carta" aria-describedby="sizing-addon1" name="numero" id="numero" value="<[op_numero]>">
             </div>
             <div class="input-group input-group-lg w3_w3layouts">
-                <span class="input-group-addon" id="sizing-addon1">Via</span>
-                <input type="text" class="form-control" placeholder="Via" aria-describedby="sizing-addon1" name="via" id="via" value="<[op_via]>">
+                <span class="input-group-addon" id="sizing-addon1">CVV</span>
+                <input type="text" class="form-control" placeholder="CVV" aria-describedby="sizing-addon1" name="cvv" id="cvv" value="<[op_cvv]>">
             </div>
             <div class="input-group input-group-lg w3_w3layouts">
-                <span class="input-group-addon" id="sizing-addon1">Numero Civico</span>
-                <input type="text" class="form-control" placeholder="Numero Civico" aria-describedby="sizing-addon1" name="ncivico" id="ncivico" value="<[op_ncivico]>">
+                <span class="input-group-addon" id="sizing-addon1">Scadenza </span>
+                <input type="text" class="form-control" placeholder="Scadenza" aria-describedby="sizing-addon1" name="scadenza" id="scadenza" value="<[op_scadenza]>">
             </div>
             <div class="input-group input-group-lg w3_w3layouts">
-                <span class="input-group-addon" id="sizing-addon1">CAP</span>
-                <input type="text" class="form-control" placeholder="CAP" aria-describedby="sizing-addon1" name="cap" id="cap" value="<[op_cap]>">
-            </div>
-            <div class="input-group input-group-lg w3_w3layouts">
-                <span class="input-group-addon" id="sizing-addon1">Provincia</span>
-                <input type="text" class="form-control" placeholder="Provincia" aria-describedby="sizing-addon1" name="prov" id="prov" value="<[op_prov]>">
-            </div>
-            <div class="input-group input-group-lg w3_w3layouts">
-                <span class="input-group-addon" id="sizing-addon1">Paese</span>
-                <input type="text" class="form-control" placeholder="Paese" aria-describedby="sizing-addon1" name="paese" id="paese" value="<[op_paese]>">
-            </div>
-            <div class="input-group input-group-lg w3_w3layouts">
-                <span class="input-group-addon" id="sizing-addon1">Altre Particolarita</span>
-                <input type="text" class="form-control" placeholder="Altre particolarita" aria-describedby="sizing-addon1" name="particolarita" id="particolarita" value="<[op_particolarita]>">
+                <span class="input-group-addon" id="sizing-addon1">Nome Proprietario</span>
+                <input type="text" class="form-control" placeholder="CAP" aria-describedby="sizing-addon1" name="nome" id="nome" value="<[op_nome]>">
             </div>
 			<input type="submit" name="modSped" id="modSped" value="Modifica" />
-			<input type="button" name="delSped" id="delSped" value="Cancella" onclick="location.href='delOptionSped.php?id=<[op_id]>'"/>
+			<input type="button" name="delSped" id="delSped" value="Cancella" onclick="location.href='delOptionPay.php?id=<[op_id]>'"/>
         </form>
     </div>
 	
