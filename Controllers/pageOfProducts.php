@@ -16,7 +16,7 @@
 		$bar = new Template("../dtml/userBarUnsigned.html");
 	}
 
-	$main = new Template("../dtml/mainFrame.html"); 	// template principale comune a tutte le pagine del sito
+	$main = new Template("../dtml/listaProdotti.html"); 	// template principale comune a tutte le pagine del sito
 	$card = new Template("../dtml/products.html"); // sottotemplate per il singolo prodotto
 	$pag = new Template("../dtml/pagination.html");
 
