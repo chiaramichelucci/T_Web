@@ -9,7 +9,7 @@
             $this->conn = $db;
         }
 
-        public function getRecensione($prodottoId){​​
+        public function getRecensione($prodottoId){
             $sql = "SELECT * FROM " . $this->table_name . " WHERE id_prodotto = ?";
             $stmt = $this->conn->prepare( $sql );
             $stmt->execute([$prodottoId]);

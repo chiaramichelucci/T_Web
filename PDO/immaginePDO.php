@@ -10,8 +10,9 @@
         }
 
         public function getByProdId($idProd){
-            $sql = "SELECT url AS url_prod_img FROM " . $this->table_name . " WHERE id_prodotto = " . $idProd;
+            $sql = "SELECT url AS url_prod_img FROM " . $this->table_name . " WHERE id_prodotto = :id";
             $stmt = $this->conn->prepare( $sql );
+            $stmt->bindValue( ":id", $idProd, PDO::PARAM_INT );
             $stmt->execute();
             return $stmt;
         }

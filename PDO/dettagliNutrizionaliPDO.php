@@ -9,7 +9,7 @@
             $this->conn = $db;
         }
 
-        public function getDettagliN($idProdotto){​​
+        public function getDettagliN($idProdotto){
             $sql = "SELECT * FROM " . $this->table_name . " WHERE id_prodotto = ?";
             $stmt = $this->conn->prepare( $sql );
             $stmt->execute([$idProdotto]);

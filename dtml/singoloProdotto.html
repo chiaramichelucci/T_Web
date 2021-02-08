@@ -276,25 +276,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="grid images_3_of_2">
 					<div class="flexslider">
 						<ul class="slides">
+							<[foreach]>
 							<li data-thumb="../dtml/images/si.jpg">
 								<div class="thumb-image">
-									<img src="../dtml/images/si.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+									<img src="<[url_prod_img]>" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
-							<li data-thumb="../dtml/images/si2.jpg">
-								<div class="thumb-image">
-									<img src="../dtml/images/si2.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-							</li>
-							<li data-thumb="../dtml/images/si3.jpg">
-								<div class="thumb-image">
-									<img src="../dtml/images/si3.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-							</li>
+							<[/foreach]>
 						</ul>
 						<div class="clearfix"></div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-7 single-right-left simpleCart_shelfItem">
-				<h3>Zeeba Premium Basmati Rice - 5 KG</h3>
+				<h3><[nome]></h3>
 				<div class="rating1">
 					<span class="starRating">
 						<input id="rating5" type="radio" name="rating" value="5">
@@ -310,8 +304,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</span>
 				</div>
 				<p>
-					<span class="item_price">$950.00</span>
-					<del>$1300.00</del>
+					<span class="item_price">$<[prezzo]></span>
+					<!--<del>$1300.00</del>-->
 					<label>Free delivery</label>
 				</p>
 				<div class="single-infoagile">
@@ -320,7 +314,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							 INFORMAZIONI SUL PRODOTTO
 						</li>
 						<li>
-							Descrizione:
+							Descrizione:<[descrizione]>
 						</li>
 					</ul>
 				</div>
@@ -329,28 +323,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<i class="fa fa-hand-o-right" aria-hidden="true"></i>Valori nutrizionali</p>
 					<ul>
 						<li>
-							Energia:
+							Energia:<[energia]>
 						</li>
 						<li>
-							Grassi:
+							Grassi:<[grassi]>
 						</li>
 						<li>
-							Carboidrati
+							Carboidrati:<[carboidrati]>
 						</li>
 						<li>
-							Proteine:
+							Proteine:<[proteine]>
 						</li>
 						<li>
-							Sale:
+							Sale:<[sale]>
 						</li>
 						<li>
-							Anidrite Carbonica:
+							Anidrite Carbonica:<[anidrite_carbonica]>
 						</li>
 						<li>
-							Calcio:
+							Calcio:<[calcio]>
 						</li>
 						<li>
-							Sodio:
+							Sodio:<[sodio]>
 						</li>
 					</ul>
 					<p>

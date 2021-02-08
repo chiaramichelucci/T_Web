@@ -12,14 +12,10 @@
         public function getProdotto($prodottoId){
             $sql = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
             $stmt = $this->conn->prepare( $sql );
-            $stmt->execute([$prodottoId]);
-            $num = $stmt->rowCount();
-            print_r($num);
-            if($num == 0){
+            if($stmt->execute([$prodottoId])){
+                return $stmt;
+            }else{
                 return false;
-            } else {
-                $prodotto = $stmt->fetch(PDO::FETCH_ASSOC);
-                return $prodotto;
             }
         } 
 
@@ -30,9 +26,11 @@
             return $stmt;
         }
 
-        public function getNProd($limit, $page){
-            $sql = "SELECT * FROM " . $this->table_name . "LIMIT " . $page . " , " . $limit;
+        public function getNProd($page, $limit){
+            $sql = "SELECT * FROM " . $this->table_name . " ORDER BY id LIMIT :offset, :row ";
             $stmt = $this->conn->prepare( $sql );
+            $stmt->bindValue( ":offset", $page, PDO::PARAM_INT );
+            $stmt->bindValue( ":row", $limit, PDO::PARAM_INT );
             $status = $stmt->execute();
             return $stmt;
         }

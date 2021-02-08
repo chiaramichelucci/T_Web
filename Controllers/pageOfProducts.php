@@ -5,6 +5,7 @@
 	require "../Data/prodotto.php";
 	require "../include/template2.inc.php";
 
+	session_start();
 	$checkSession = session_status();
 	if($checkSession == PHP_SESSION_ACTIVE){
 		if($_SESSION['group'] == 1){
@@ -31,37 +32,11 @@
 	$s = $prodotti->getAll();
 	$total_results = $s->fetchColumn();
 	$total_pages = ceil($total_results/$limit);
-	$starting_limit = ($page-1)*$limit;            //sto limit non mi convince
-	//$stmt = $prodotti->getNProd($starting_limit, $limit);
-	//$num = $stmt->rowCount();
-	$num = 0;
+	$starting_limit = ($page-1)*$limit;   
+	print("start->" . $starting_limit);         
+	$stmt = $prodotti->getNProd($starting_limit, $limit);
+	$num = $stmt->rowCount();
 	$images = new Immagine($db);
-
-	/*$pag->setContent("page_nP", $page-1);
-	$pag->setContent("page_nC", $page);
-	$pag->setContent("page_nN", $page+1);
-	$pag->setContent("page_linkP", "?page=" . $page-1);
-	$pag->setContent("page_linkC", "#");
-	$pag->setContent("page_linkN", "?page=" . $page+1);
-	if($page=1){
-		$pag->setContent("page_classP", "disabled");
-		$pag->setContent("page_classC", "current");
-		$pag->setContent("page_classP", "");
-	}*/
-
-	/*foreach($total_pages as $pagina){
-		if($page == $pagina){
-			$pag->setContent("pageClass");
-		}
-	}*/
-
-	/*$html = '<ul class="pagination">';
-	if($page == 1){
-		$class = "disabled";
-	} else {
-		$class = "";
-	}
-	$html = '<li class="' . $class . '"><a href="?page="' . $page . '';*/
 
 	if($num>0){
 	while ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -79,9 +54,38 @@
 		}
 	};
 	}
+	/*if($page==1){
+		$succ = $page+1;
+		$pag->setContent("page_nC", $page);
+		$pag->setContent("page_nN", $succ);
+		$pag->setContent("page_linkC", "#");
+		$pag->setContent("page_linkN", "?page=" . $succ);
+	}elseif($page<$total_pages){
+		$prev = $page-1;
+		$succ = $page+1;
+		$pag->setContent("page_nP", $prev);
+		$pag->setContent("page_nC", $page);
+		$pag->setContent("page_nN", $succ);
+		$pag->setContent("page_linkP", "?page=" . $prev);
+		$pag->setContent("page_linkC", "#");
+		$pag->setContent("page_linkN", "?page=" . $succ);
+	}else{
+		$prev = $page-1;
+		$pag->setContent("page_nP", $prev);
+		$pag->setContent("page_nC", $page);
+		$pag->setContent("page_linkP", "?page=" . $prev);
+		$pag->setContent("page_linkC", "#");
+	}*/
+	$prev = $page-1;
+	$succ = $page+1;
+	$pag->setContent("page_linkP",  $prev);
+	$pag->setContent("page_nC", $page);
+	$pag->setContent("page_linkN", $succ);
+
+	
 	$main->setContent("userbar", $bar->get());
 	$main->setContent("prodotti", $card->get());
-	//$main->setContent("paging", $pag->get());
+	$main->setContent("paging", $pag->get());
 	$main->close();
 
 ?>

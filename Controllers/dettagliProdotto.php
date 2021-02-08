@@ -10,6 +10,7 @@
     require "../Data/dettagliNutrizionali.php";
 
     $main = new Template("../dtml/singoloProdotto.html");
+    $error = new Template("../dtml/error.html");
     //$card = new Template("../dtml/products.html");
 
     $database = new Database();
@@ -17,13 +18,24 @@
     $prodotto = new Prodotto($db);
     $images = new Immagine($db);
     $lotto = new Lotto($db);
-    $prod = new Produttore($db);
+    $produttore = new Produttore($db);
+    $prod = new Prodotto($db);
     $rec = new Recensione($db);
     $dettN = new DettagliNutrizionali($db);
 
-    $id_prod = $prod->getProdotto($_SESSION['prodotto_id']);
+    if(isset($_GET['id']) && !empty($_GET['id'])){
+        $id_prod = $prod->getProdotto($_GET['id']);
+    } else {
+        $error->setContent("msgErrore", "Nessun id");
+        $error->close();
+    }
 
-	$img = $images->getByProdId($id);
+    if($id_prod == false){
+        $error->setContent("msgErrore", "Nessuno prodotto con quello id");
+        $error->close();
+    }
+
+	$img = $images->getByProdId($id_prod);
 	$numImg = $img->rowCount();
 	if($numImg>0){
 		$dataImg = $img->fetch(PDO::FETCH_ASSOC);
