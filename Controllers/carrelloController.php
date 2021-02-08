@@ -17,10 +17,21 @@
     $prodotto = new Prodotto($db);
     $images = new Immagine($db);
 
-    if($user->id != 0){
-        $cart = $carrello->getByUserId($user->id);
-        $id = print_r($data['id'], true);
-        $img = $images->getByProdId($id);
+
+    $id_user = $user->getUser($_SESSION['user_id']);
+
+    
+    if($id_user != 0){
+        $cart = $carrello->viewCart($id_user);
+    } else{
+        callErrorTemplate($msg);
+    }
+
+
+    function callErrorTemplate($errore){
+        $error = new Template("../dtml/error.html");
+        $error->setContent("msgError", $errore);
+        $error->close();
     }
 
     //sezione di controllo per quantita' e prezzo
