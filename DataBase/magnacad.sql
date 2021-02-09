@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Creato il: Gen 12, 2021 alle 15:16
+-- Creato il: Feb 09, 2021 alle 14:12
 -- Versione del server: 10.4.10-MariaDB
 -- Versione PHP: 7.3.12
 
@@ -32,6 +32,7 @@ DROP TABLE IF EXISTS `carrello`;
 CREATE TABLE IF NOT EXISTS `carrello` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_prodotto` int(11) NOT NULL,
+  `quantita` int(50) NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_prodotto` (`id_prodotto`) USING BTREE,
@@ -42,19 +43,19 @@ CREATE TABLE IF NOT EXISTS `carrello` (
 -- Dump dei dati per la tabella `carrello`
 --
 
-INSERT INTO `carrello` (`id`, `id_prodotto`, `id_user`) VALUES
-(1, 1, 3),
-(2, 8, 3),
-(3, 14, 3),
-(4, 19, 1),
-(5, 20, 1),
-(6, 18, 1),
-(7, 17, 1),
-(8, 9, 2),
-(9, 7, 2),
-(10, 6, 2),
-(11, 15, 4),
-(12, 16, 4);
+INSERT INTO `carrello` (`id`, `id_prodotto`, `quantita`, `id_user`) VALUES
+(1, 1, 0, 3),
+(2, 8, 0, 3),
+(3, 14, 0, 3),
+(4, 19, 0, 1),
+(5, 20, 0, 1),
+(6, 18, 0, 1),
+(7, 17, 0, 1),
+(8, 9, 0, 2),
+(9, 7, 0, 2),
+(10, 6, 0, 2),
+(11, 15, 0, 4),
+(12, 16, 0, 4);
 
 -- --------------------------------------------------------
 
@@ -181,6 +182,7 @@ CREATE TABLE IF NOT EXISTS `info_pagamento` (
   `id_ordine` int(11) NOT NULL,
   `modalita` varchar(100) NOT NULL,
   `numero_carta` int(16) DEFAULT NULL,
+  `nome_proprietario` varchar(1000) DEFAULT NULL,
   `scadenza` varchar(5) DEFAULT NULL,
   `cvv` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -191,8 +193,8 @@ CREATE TABLE IF NOT EXISTS `info_pagamento` (
 -- Dump dei dati per la tabella `info_pagamento`
 --
 
-INSERT INTO `info_pagamento` (`id`, `id_ordine`, `modalita`, `numero_carta`, `scadenza`, `cvv`) VALUES
-(1, 1, 'alla consegna', NULL, NULL, NULL);
+INSERT INTO `info_pagamento` (`id`, `id_ordine`, `modalita`, `numero_carta`, `nome_proprietario`, `scadenza`, `cvv`) VALUES
+(1, 1, 'alla consegna', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
