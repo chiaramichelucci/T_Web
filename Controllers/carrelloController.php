@@ -34,7 +34,9 @@
         $error->close();
     }
 
-    //sezione di controllo per quantita' e prezzo
+    $quant = $carrello->getQuantita($_SESSION['quantita']);
+    //funzione per calcolo prezzo singolo prodotto in base alla quantità
+    //funzione per calcolo prezzo totale
 
     $main->close();
 

@@ -5,6 +5,7 @@
 
         public $id;
         public $id_prodotto;
+        public $quantita;
         public $id_user;
 
         public function __construct($db) {
@@ -19,6 +20,10 @@
             return $this->id_prodotto;
         }
 
+        public function getQuantita(){
+            return $this->quantita;
+        }
+
         public function getIdUser(){
             return $this->id_user;
         }
@@ -29,6 +34,10 @@
 
         public function setIdProdotto($id_prodotto){
             $this->id_prodotto = $id_prodotto;
+        }
+
+        public function setQuantita($quantita){
+            $this->quantita = $quantita;
         }
 
         public function setIdUser($id_user){
@@ -42,6 +51,7 @@
             } else {
                 $this->setId($carr['id']);
                 $this->setIdProdotto($carr['id_prodotto']);
+                $this->setQuantita($carr['quantita']);
                 $this->setIdUser($carr['id_user']);
             }
         }

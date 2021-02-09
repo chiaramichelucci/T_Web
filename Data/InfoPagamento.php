@@ -7,6 +7,7 @@
         public $id_ordine;
         public $modalita;
         public $numero_carta;
+        public $nome_proprietario;
         public $scadenza;
         public $cvv;
         
@@ -29,6 +30,10 @@
 
         public function getNumeroCarta(){
             return $this->numero_carta;
+        }
+
+        public function getNomeProprietario(){
+            return $this->nome_proprietario;
         }
 
         public function getScadenza(){
@@ -55,6 +60,10 @@
             $this->numero_carta = $numero_carta;
         }
 
+        public function setNomeProprietario($nome_proprietario){
+            $this->nome_proprietario = $nome_proprietario;
+        }
+
         public function setScadenza($scadenza){
             $this->scadenza = $scadenza;
         }
@@ -72,6 +81,7 @@
                 $this->setIdOrdine($ip['id_ordine']);
                 $this->setModalita($ip['modalita']);
                 $this->setNumeroCarta($ip['numero_carta']);
+                $this->setNomeProprietario($ip['nome_proprietario']);
                 $this->setScadenza($ip['scadenza']);
                 $this->setCvv($ip['cvv']);
                 
