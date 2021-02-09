@@ -14,8 +14,6 @@
         $error->close();
     }
 
-    print_r($_SESSION);
-
 
     $database = new Database();
     $db = $database->getConnection();

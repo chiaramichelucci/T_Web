@@ -13,7 +13,8 @@
             $sql = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
             $stmt = $this->conn->prepare( $sql );
             if($stmt->execute([$prodottoId])){
-                return $stmt;
+                $coso = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $coso;
             }else{
                 return false;
             }

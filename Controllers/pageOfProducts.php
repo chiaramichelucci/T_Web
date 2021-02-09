@@ -8,14 +8,16 @@
 	session_start();
 	$checkSession = session_status();
 	if($checkSession == PHP_SESSION_ACTIVE){
-		if($_SESSION['group'] == 1){
+		if(isset($_SESSION['group']) && !empty($_SESSION['group']) && $_SESSION['group'] == 1){
 			$bar = new Template("../dtml/userBarAdmin.html");
-		} else {
-			$bar = new Template("../dtml/userBarGeneric.html");
-		}
-	} else {
-		$bar = new Template("../dtml/userBarUnsigned.html");
-	}
+		} elseif(isset($_SESSION['group']) && !empty($_SESSION['group']) && $_SESSION['group'] == 2){
+            $bar = new Template("../dtml/userBarGeneric.html");
+        }else{
+            $bar = new Template("../dtml/userBarUnsigned.html");
+        }
+    }else{
+        $bar = new Template("../dtml/userBarUnsigned.html");
+    }
 
 	$main = new Template("../dtml/listaProdotti.html"); 	// template principale comune a tutte le pagine del sito
 	$card = new Template("../dtml/products.html"); // sottotemplate per il singolo prodotto

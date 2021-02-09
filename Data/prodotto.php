@@ -4,6 +4,7 @@
     class Prodotto extends ProdottoPDO{
 
         public $id;
+        public $nome;
         public $prezzo;
         public $sconto;
         public $id_categoria;
@@ -16,6 +17,10 @@
 
         public function getId(){
             return $this->id;
+        }
+
+        public function getNome(){
+            return $this->nome;
         }
 
         public function getPrezzo(){
@@ -42,6 +47,10 @@
             $this->id = $id;
         }
 
+        public function setNome($nome){
+            $this->nome = $nome;
+        }
+
         public function setPrezzo($prezzo){
             $this->prezzo = $prezzo;
         }
@@ -56,6 +65,21 @@
         }
         public function setIdProduttore($id_produttore){
             $this->id_produttore = $id_produttore;
+        }
+
+        public function getProdotto($id){
+            $coso = parent::getProdotto($id);
+            if($coso == false){
+                $this->setId(0);
+            }else{
+                $this->setId($coso['id']);
+                $this->setNome($coso['nome']);
+                $this->setPrezzo($coso['prezzo']);
+                $this->setSconto($coso['sconto']);
+                //$this->setIdCategoria($coso['id_categoria']);
+                $this->setDescrizione($coso['descrizione']);
+                $this->setIdProduttore($coso['id_produttore']);
+            }
         }
 
     }

@@ -12,8 +12,12 @@
         public function getDettagliN($idProdotto){
             $sql = "SELECT * FROM " . $this->table_name . " WHERE id_prodotto = ?";
             $stmt = $this->conn->prepare( $sql );
-            $stmt->execute([$idProdotto]);
-            return $stmt;
+            if($stmt->execute([$idProdotto])){
+                $coso = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $coso;
+            }else{
+                return false;
+            }
         }
 
         public function getAll(){

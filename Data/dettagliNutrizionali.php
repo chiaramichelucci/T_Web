@@ -62,57 +62,57 @@
             $this->id = $id;
         }
 
-        public function setIdProdotto(){
-            $this->id_prodotto;
+        public function setIdProdotto($id_prodotto){
+            $this->id_prodotto = $id_prodotto;
         }
 
-        public function setEnergia(){
-            $this->energia;
+        public function setEnergia($energia){
+            $this->energia = $energia;
         }
 
-        public function setGrassi(){
-            $this->grassi;
+        public function setGrassi($grassi){
+            $this->grassi = $grassi;
         }
 
-        public function setCarboidrati(){
-            $this->carboidrati;
+        public function setCarboidrati($carb){
+            $this->carboidrati = $carb;
         }
 
-        public function setProteine(){
-            $this->proteine;
+        public function setProteine($proteine){
+            $this->proteine = $proteine;
         }
         
-        public function setSale(){
-            $this->sale;
+        public function setSale($sale){
+            $this->sale = $sale;
         }
 
-        public function setAnidriteCarbonica(){
-            $this->anidrite_carbonica;
+        public function setAnidriteCarbonica($ani){
+            $this->anidrite_carbonica = $ani;
         }
 
-        public function setCalcio(){
-            $this->calcio;
+        public function setCalcio($calcio){
+            $this->calcio = $calcio;
         }
 
-        public function setSodio(){
-            $this->sodio;
+        public function setSodio($sodio){
+            $this->sodio = $sodio;
         }
 
         public function getDettagliN($id){
-            $dn = parent::getId($id);
+            $dn = parent::getDettagliN($id);
             if($dn == false){
                 $this->setId(0);
             } else {
                 $this->setId($dn['id']);
                 $this->setIdProdotto($dn['id_prodotto']);
-                $this->setEnergia($dn['energia']);
-                $this->setGrassi($dn['grassi']);
-                $this->setCarboidrati($dn['carboidrati']);
-                $this->setProteine($dn['proteine']);
-                $this->setSale($dn['sale']);
-                $this->setAnidriteCarbonica($dn['anidrite_carbonica']);
-                $this->setCalcio($dn['calcio']);
-                $this->setSodio($dn['sodio']);
+                if($dn['energia'] != NULL && $dn['energia'] != ""){ $this->setEnergia($dn['energia']); } else { $this->setEnergia(0); }
+                if($dn['grassi'] != NULL && $dn['grassi'] != ""){ $this->setGrassi($dn['grassi']); } else { $this->setGrassi(0); }
+                if($dn['carboidrati'] != NULL && $dn['carboidrati'] != ""){ $this->setCarboidrati($dn['carboidrati']); } else { $this->setCarboidrati(0); }
+                if($dn['proteine'] != NULL && $dn['proteine'] != ""){ $this->setProteine($dn['proteine']); } else { $this->setProteine(0); }
+                if($dn['sale'] != NULL && $dn['sale'] != ""){ $this->setSale($dn['sale']); } else { $this->setSale(0); }
+                if($dn['anidrite_carbonica'] != NULL && $dn['anidrite_carbonica'] != ""){ $this->setAnidriteCarbonica($dn['anidrite_carbonica']); } else { $this->setAnidriteCarbonica(0); }
+                if($dn['calcio'] != NULL && $dn['calcio'] != ""){ $this->setCalcio($dn['calcio']); } else { $this->setCalcio(0); }
+                if($dn['sodio'] != NULL && $dn['sodio'] != ""){ $this->setSodio($dn['sodio']); } else { $this->setSodio(0); }
 
             }
         }

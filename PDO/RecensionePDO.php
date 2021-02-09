@@ -30,6 +30,7 @@
             $stmt = $this->conn->prepare($query);
             $stmt->execute([$id_user, $id_prod, $titolo, $voto, $testo]);
         }
+        
 
     }
 
