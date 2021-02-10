@@ -9,6 +9,16 @@
             $this->conn = $db;
         }
 
+        public function getUsers(){
+            $sql = "SELECT * FROM " . $this->table_name;
+            $stmt = $this->conn->prepare($sql);
+            if($stmt->execute()){
+                return $stmt;
+            }else{
+                return false;
+            }
+        }
+
         public function getUser($userId){
             $sql = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
             $stmt = $this->conn->prepare( $sql );

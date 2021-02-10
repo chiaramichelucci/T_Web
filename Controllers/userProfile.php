@@ -8,18 +8,19 @@
 
     $main = new Template("../dtml/userProfile.html");
     session_start();
-    $checkSession = session_status();
-    if($checkSession == PHP_SESSION_NONE || $checkSession == PHP_SESSION_DISABLED){
-        $msg = "Non hai accesso a questa pagina";
-        $error->setContent("msgError", $msg);
-        $error->close();
-    } elseif($_SESSION['user_group'] == 2) {
-        $bar = new Template("../dtml/userBarGeneric.html");
-        $main->setContent("userbar", $bar->get());
-    } else {
-        $bar = new Template("../dtml/userBarAdmin.html");
-        $main->setContent("userbar", $bar->get());
+	$checkSession = session_status();
+	if($checkSession == PHP_SESSION_ACTIVE){
+		if(isset($_SESSION['user_group']) && !empty($_SESSION['user_group']) && $_SESSION['user_group'] == 1){
+			$bar = new Template("../dtml/userBarAdmin.html");
+		} elseif(isset($_SESSION['user_group']) && !empty($_SESSION['user_group']) && $_SESSION['user_group'] == 2){
+            $bar = new Template("../dtml/userBarGeneric.html");
+        }else{
+            $bar = new Template("../dtml/userBarUnsigned.html");
+        }
+    }else{
+        $bar = new Template("../dtml/userBarUnsigned.html");
     }
+    $main->setContent("userbar", $bar->get());
 
     $database = new Database();
     $db = $database->getConnection();

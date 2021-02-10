@@ -20,6 +20,17 @@
             }
         } 
 
+        public function getProdotti(){
+            $sql = "SELECT * FROM " . $this->table_name;
+            $stmt = $this->conn->prepare($sql);
+            if($stmt->execute()){
+                return $stmt;
+            }else{
+                return false;
+            }
+
+        }
+
         public function getAll(){
             $sql = "SELECT * FROM " . $this->table_name;
             $stmt = $this->conn->prepare( $sql );
