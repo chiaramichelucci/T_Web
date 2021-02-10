@@ -23,6 +23,8 @@
     
     if($id_user != 0){
         $cart = $carrello->viewCart($id_user);
+        $id_prodotto = $carrello->getProdotto($id_user);
+        $prezzo = $prodotto->getPrezzoP($id_prodotto);
     } else{
         callErrorTemplate($msg);
     }
@@ -35,8 +37,17 @@
     }
 
     $quant = $carrello->getQuantita($_SESSION['quantita']);
-    //funzione per calcolo prezzo singolo prodotto in base alla quantità
-    //funzione per calcolo prezzo totale
+
+
+    $somma = 0;
+    result_set = getCarrello($id_user);
+    while(result_set->fetch){​​
+        prod_id = result_set(id_prodotto)
+        result_set2 = getProdotto($id_prodotto)
+        result_set2->fetch(prezzo)
+        $somma = $somma + result_set2(prezzo)
+    }
+
 
     $main->close();
 

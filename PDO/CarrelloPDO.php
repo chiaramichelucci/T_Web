@@ -15,6 +15,13 @@
             $stmt->execute([$idUser]);
             return $stmt;
         }  
+
+        public function getProdotto($idUser){
+            $sql = "SELECT id_prodotto FROM " . $this->table_name . " WHERE id_user = ?";
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute([$idUser]);
+            return $stmt;
+        }
         
         public function getAll(){
             $sql = "SELECT * FROM " . $this->table_name;
