@@ -15,7 +15,7 @@
     }else{
         $bar = new Template("../dtml/userBarUnsigned.html");
     }
-    $main = new Template("../dtml/index.html"); 	// template principale comune a tutte le pagine del sito
+    $main = new Template("../dtml/index.html"); 
 
     $main->setContent("userbar", $bar->get());
     $main->close();

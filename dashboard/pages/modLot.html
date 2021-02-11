@@ -47,7 +47,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Modifica Prodotto</h1>
+                            <h1 class="page-header">Nuovo Lotto</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -55,52 +55,44 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="panel panel-default">
-                                <form role="form" method="POST" action="modificaProduct.php">
+                                <form role="form" method="POST" action="modificaLot.php">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Id Prodotto" name="id_prod" id="id_prod" value="<[id]>" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Nome Prodotto" name="nome_prod" id="nome_prod" value="<[nome]>" required>
-                                    </div>
-                                    <div class="form-group input-group">
-                                        <span class="input-group-addon"><i class="fa fa-eur"></i>
-                                        </span>
-                                        <input type="number" class="form-control" placeholder="Prezzo Prodotto" name="prezzo_prod" id="prezzo_prod" value="<[prezzo]>" required>
-                                    </div>
-                                    <div class="form-group input-group">
-                                        <span class="input-group-addon"><i class="fa fa-percent"></i>
-                                        </span>
-                                        <input type="number" class="form-control" placeholder="Sconto Prodotto" name="sconto_prod" id="sconto_prod" value="<[sconto]>">
+                                        <input type="text" class="form-control" placeholder="Id Prodotto" name="id_lot" id="id_lot" value="<[id]>" readonly>
                                     </div>
                                     <div class="form-group">
-                                        <label>Text area</label>
-                                        <textarea class="form-control" rows="3" name="desc_prod" id="desc_prod" required><[descrizione]></textarea>
+                                        <input type="number" class="form-control" placeholder="Numero Lotto" name="nr_lot" id="nr_lot" value="<[numero]>" required>
+                                    </div>
+                                    <div class="form-group">  
+                                        <input type="number" class="form-control" placeholder="Quantita Disponibile" name="q_lot" id="q_lot" value="<[quantita_disponibile]>" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="disabledSelect">Categoria</label>
-                                        <input class="form-control" id="disabledInput" type="text" placeholder="Categoria" value="<[categoria]> - <[nome_categoria]>" disabled>
+                                        <input type="date" class="form-control" placeholder="Scadenza" name="sca_lot" id="sca_lot" value="<[scadenza]>" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Categoria</label>
-                                        <select class="form-control" name="cat_prod" id="cat_prod" required>
+                                        <label for="disabledSelect">Prodotto</label>
+                                        <input class="form-control" id="disabledInput" type="text" placeholder="Prodotto" value="<[id_prodotto]> - <[nome_prodotto]>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Prodotto</label>
+                                        <select class="form-control" name="prod_lot" id="prod_lot" required>
                                             <[foreach]>
-                                                <option><[categoria_id]> - <[categoria_nome]></option>
+                                                <option><[prodotto_id]> - <[prodotto_nome]></option>
                                             <[/foreach]>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="disabledSelect">Disabled input</label>
-                                        <input class="form-control" id="disabledInput" type="text" placeholder="Produttore" value="<[id_produttore]> - <[rs_produttore]>" disabled>
+                                        <label for="disabledSelect">Stabilimento</label>
+                                        <input class="form-control" id="disabledInput" type="text" placeholder="Categoria" value="<[id_stabilimento]> - <[nome_stabilimento]>" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label>Produttore</label>
-                                        <select class="form-control" name="prod_prod" id="prod_prod" required>
+                                        <label>Stabilimento</label>
+                                        <select class="form-control" name="sta_lot" id="sta_lot" required>
                                             <[foreach]>
-                                                <option><[produttore_id]> - <[produttore_rs]></option>
+                                                <option><[stabilimento_id]> - <[stabilimento_nome]></option>
                                             <[/foreach]>
                                         </select>
                                     </div>
-                                    <button class="btn btn-default" type="submit">Modifica Prodotto</button>
+                                    <button class="btn btn-default" type="submit">Modifica Lotto</button>
                                 </form>
                                 <!-- /.panel-body -->
                             </div>

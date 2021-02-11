@@ -19,6 +19,10 @@
             return $this->id;
         }
 
+        public function setId($id){
+            $this->id = $id;
+        }
+
         public function getRagioneSociale(){
             return $this->ragione_sociale;
         }
@@ -65,6 +69,22 @@
 
         public function setSito($sito){
             $this->sito = $sito;
+        }
+
+        public function getProduttore($id){
+            $rs = parent::getById($id);
+            if($rs == false){
+                $this->setId(0);
+            } else {
+                $coso = $rs->fetch(PDO::FETCH_ASSOC);
+                $this->setId($coso['id']);
+                $this->setNumeroVerde($coso['numero_verde']);
+                $this->setRagioneSociale($coso['ragione_sociale']);
+                $this->setPrefisso($coso['prefisso']);
+                $this->setPartitaIVA($coso['partita_iva']);
+                $this->setEmail($coso['email']);
+                $this->setSito($coso['sito']);
+            }
         }
     }
 

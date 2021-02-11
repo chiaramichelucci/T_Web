@@ -42,24 +42,38 @@
             $this->id = $id;
         }
 
-        public function setNumero(){
-            $this->numero;
+        public function setNumero($numero){
+            $this->numero = $numero;
         }
         
-        public function setQuantitaDisponibile(){
-            $this->quantita_disponibile;
+        public function setQuantitaDisponibile($quantita){
+            $this->quantita_disponibile = $quantita;
         }
 
-        public function setScadenza(){
-            $this->scadenza;
+        public function setScadenza($sca){
+            $this->scadenza = $scadenza;
         }
 
-        public function setIdProdotto(){
-            $this->id_prodotto;
+        public function setIdProdotto($id){
+            $this->id_prodotto = $id;
         }
         
-        public function setIdStabilimento(){
-            $this->id_stabilimento;
+        public function setIdStabilimento($id){
+            $this->id_stabilimento = $id;
+        }
+
+        public function getlotto($id){
+            $coso = parent::getLotto($id);
+            if($coso == false){
+                $this->setId(0);
+            }else{
+                $this->setId($coso['id']);
+                $this->setNumero($coso['numero']);
+                $this->setQuantitaDisponibile($coso['quantita_disponibile']);
+                $this->setScadenza($coso['scadenza']);
+                $this->setIdProdotto($coso['id_prodotto']);
+                $this->setIdStabilimento($coso['id_stabilimento']);
+            }
         }
     }
 

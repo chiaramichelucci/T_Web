@@ -8,9 +8,9 @@
 	session_start();
 	$checkSession = session_status();
 	if($checkSession == PHP_SESSION_ACTIVE){
-		if(isset($_SESSION['group']) && !empty($_SESSION['group']) && $_SESSION['group'] == 1){
+		if(isset($_SESSION['user_group']) && !empty($_SESSION['user_group']) && $_SESSION['user_group'] == 1){
 			$bar = new Template("../dtml/userBarAdmin.html");
-		} elseif(isset($_SESSION['group']) && !empty($_SESSION['group']) && $_SESSION['group'] == 2){
+		} elseif(isset($_SESSION['user_group']) && !empty($_SESSION['user_group']) && $_SESSION['user_group'] == 2){
             $bar = new Template("../dtml/userBarGeneric.html");
         }else{
             $bar = new Template("../dtml/userBarUnsigned.html");

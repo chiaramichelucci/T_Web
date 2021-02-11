@@ -19,6 +19,19 @@
             }
             
         }
+
+        public function getById($id){
+            $sql = "SELECT * FROM " . $this->table_name . " WHERE id = :id";
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+            if($stmt->execute()){
+                return $stmt;
+            }else{
+                return false;
+            }
+            
+        }
+
     }
 
 ?>

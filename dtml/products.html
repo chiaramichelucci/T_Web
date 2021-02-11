@@ -15,14 +15,15 @@
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="il link per la pagina singola"><[nome]></a>
+										<a href="dettagliProdotto.php?id=<[id]>"><[nome]></a>
 									</h4>
 									<div class="info-product-price">
 										<span class="item_price"><[prezzo]>€</span>
 										<!--<del>$280.00</del>-->
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="il link per la pagina singola" method="post">
+										<form action="addToCarello.php" method="post">
+											<input type="text" name="id_prod" id="id_prod" hidden value="<[id]>" />
 											<fieldset>
 												<input type="submit" name="link" value="Add to cart" class="button" />
 											</fieldset>

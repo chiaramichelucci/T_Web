@@ -48,6 +48,44 @@
             $stmt->execute([$nuova_qta]);
             return $stmt;
         }
+
+        public function getLotto($id){
+            $sql = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
+            $stmt = $this->conn->prepare( $sql );
+            if($stmt->execute([$id])){
+                $coso = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $coso;
+            }else{
+                return false;
+            }
+        }
+
+        public function modificaLotto(){
+            $sql = "UPDATE " . $this->table_name . " SET numero=:n, quantita_disponibile=:q, scadenza=:s, id_prodotto=:idp, id_stabilimento=:ids WHERE id=:id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue( ":n", $this->numero, PDO::PARAM_INT );
+            $stmt->bindValue( ":q", $this->quantita_disponibile, PDO::PARAM_INT );
+            $stmt->bindValue( ":s", $this->scadenza, PDO::PARAM_STR );
+            $stmt->bindValue( ":idp", $this->id_prodotto, PDO::PARAM_INT );
+            $stmt->bindValue( ":ids", $this->id_stabilimento, PDO::PARAM_INT );
+            $stmt->bindValue( ":id", $this->id, PDO::PARAM_INT );
+            if($stmt->execute()){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        public function eliminaLotto($id){
+            $sql = "DELETE FROM " . $this->table_name . " WHERE id=:id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue( ":id", $id, PDO::PARAM_INT );
+            if($stmt->execute()){
+                return true;
+            }else{
+                return false;
+            }
+        }
         
     }
 
