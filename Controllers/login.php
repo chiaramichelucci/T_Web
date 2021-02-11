@@ -43,7 +43,7 @@
            $_SESSION['user_group'] = $userGroup['groups_id'];
            header('Location: ../Controllers/userProfile.php');
         } else {
-            $error->setContent("msgErrore", "login falito");
+            $error->setContent("msgErrore", "login fallito");
         }
     $error->close(); 
 

@@ -29,6 +29,7 @@
                 return false;
             }
         }
+
         public function getPrezzoP($prodottoId){
             $sql = "SELECT prezzo FROM " . $this->table_name . " WHERE id = ?";
             $stmt = $this->conn->prepare( $sql );
@@ -50,7 +51,6 @@
             }
 
         }
-        
 
         public function getAll(){
             $sql = "SELECT * FROM " . $this->table_name;
