@@ -24,9 +24,9 @@
         }
 
         public function aggiungiOpzionePagamento(){
-            $sql = "INSERT INTO " . $this->table_name . "(numero_carta, scadenza ,cvv, nome_proprietario, id_user) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO " . $this->table_name . "(tipologia, numero_carta, scadenza ,cvv, nome_proprietario, id_user) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->conn->prepare($sql);
-            if($stmt->execute(array($this->numero_carta, $this->scadenza, $this->cvv, $this->nome_proprietario, $this->id_user))){
+            if($stmt->execute(array($this->tipologia, $this->numero_carta, $this->scadenza, $this->cvv, $this->nome_proprietario, $this->id_user))){
                 return true;
             }else{
                 return false;

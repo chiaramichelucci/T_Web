@@ -22,6 +22,14 @@
             $stmt->execute();
             return $stmt;
         }
+        
+        public function creaOrdine(){
+            $sql = "INSERT INTO " . $this->table_name . " (totale, stato, data, id_user)
+            VALUES ( ?, ?, ?, ? )";
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute(array($this->totale, $this->stato, $this->data, $this->id_user));
+            return $stmt;
+        }
     }
 
 ?>

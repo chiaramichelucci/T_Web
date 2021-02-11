@@ -22,6 +22,14 @@
             $stmt->execute();
             return $stmt;
         }
+        
+        public function creaProdInOrd(){
+            $sql = "INSERT INTO " . $this->table_name . " (id_ordine, id_prodotto, quantita, id_lotto)
+            VALUES ( ?, ?, ?, ? )";
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute(array($this->id_ordine, $this->id_prodotto, $this->quantita, $this->id_lotto));
+            return $stmt;
+        }
     }
 
 ?>
