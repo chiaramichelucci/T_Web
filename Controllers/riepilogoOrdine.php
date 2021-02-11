@@ -24,6 +24,7 @@
     $prezzo = $ordine-> getByProdId($prod); //prendere il prezzo del singolo prodotto
     $paga = $infoP->getInfoPagamento($_SESSION['id_ordine']); //prendere solo la modalità di pagamento
     $data = $infoS->getInfoSpedizione($_SESSION['id_ordine']);
+    $tot = $ordine-> getTotale($id);
 
     $main->close();
 
