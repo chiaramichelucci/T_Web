@@ -43,6 +43,14 @@
             $stmt->execute([$id_user]);
             return $stmt;
         }
+        
+        public function aggiungiAlCarrello(){
+            $query = "INSERT INTO " . $this->table_name . " (id_prodotto, quantita, id_user)
+            VALUES (?, ?, ?)";
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute(array($this->id_prodotto, $this->quantita, $this->id_user));
+            return $stmt;
+        }
 
 
     }
