@@ -78,7 +78,7 @@ while(!$failed){
         }
     }
 }
-if($failed = true){
+if($failed == true){
     callErrorTemplate($msg);
 }
 
