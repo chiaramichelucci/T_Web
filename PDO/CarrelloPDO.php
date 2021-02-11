@@ -36,6 +36,14 @@
             $stmt->execute([$id_user]);
             return $stmt;
         }
+        
+        public function svuotaCarrello($id_user){
+            $query = "DELETE FROM " . $this->table_name . " WHERE id_user = ?";
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute([$id_user]);
+            return $stmt;
+        }
+
 
     }
 
