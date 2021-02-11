@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Creato il: Feb 09, 2021 alle 14:12
+-- Creato il: Feb 11, 2021 alle 10:59
 -- Versione del server: 10.4.10-MariaDB
 -- Versione PHP: 7.3.12
 
@@ -181,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `info_pagamento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ordine` int(11) NOT NULL,
   `modalita` varchar(100) NOT NULL,
-  `numero_carta` int(16) DEFAULT NULL,
+  `numero_carta` varchar(16) DEFAULT NULL,
   `nome_proprietario` varchar(1000) DEFAULT NULL,
   `scadenza` varchar(5) DEFAULT NULL,
   `cvv` int(3) DEFAULT NULL,
@@ -270,10 +270,11 @@ INSERT INTO `lotto` (`id`, `numero`, `quantita_disponibile`, `scadenza`, `id_pro
 DROP TABLE IF EXISTS `opzione_pagamento`;
 CREATE TABLE IF NOT EXISTS `opzione_pagamento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `numero_carta` bigint(16) NOT NULL,
-  `scadenza` varchar(5) NOT NULL,
-  `cvv` int(3) NOT NULL,
-  `nome_proprietario` text NOT NULL,
+  `tipologia` varchar(50) NOT NULL,
+  `numero_carta` varchar(16) DEFAULT NULL,
+  `scadenza` varchar(5) DEFAULT NULL,
+  `cvv` int(3) DEFAULT NULL,
+  `nome_proprietario` text DEFAULT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`) USING BTREE
@@ -283,8 +284,8 @@ CREATE TABLE IF NOT EXISTS `opzione_pagamento` (
 -- Dump dei dati per la tabella `opzione_pagamento`
 --
 
-INSERT INTO `opzione_pagamento` (`id`, `numero_carta`, `scadenza`, `cvv`, `nome_proprietario`, `id_user`) VALUES
-(1, 548942200378512, '05/25', 123, 'Giacomo Gigi', 4);
+INSERT INTO `opzione_pagamento` (`id`, `tipologia`, `numero_carta`, `scadenza`, `cvv`, `nome_proprietario`, `id_user`) VALUES
+(1, 'carta', '548942200378512', '05/25', 123, 'Giacomo Gigi', 4);
 
 -- --------------------------------------------------------
 
