@@ -16,6 +16,27 @@
             return $stmt;
         }
 
+        public function getData($userId){
+            $sql = "SELECT data FROM " . $this->table_name . " WHERE id_user = ?";
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute([$userId]);
+            return $stmt;
+        }
+
+        public function getTotale($userId){
+            $sql = "SELECT totale FROM " . $this->table_name . " WHERE id_user = ?";
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute([$userId]);
+            return $stmt;
+        }
+
+        public function getStato($userId){
+            $sql = "SELECT stato FROM " . $this->table_name . " WHERE id_user = ?";
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->execute([$userId]);
+            return $stmt;
+        }
+
         public function getAll(){
             $sql = "SELECT * FROM " . $this->table_name;
             $stmt = $this->conn->prepare( $sql );
