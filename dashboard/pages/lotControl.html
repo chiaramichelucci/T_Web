@@ -65,12 +65,11 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nome Prodotto</th>
-                                                    <th>Prezzo</th>
-                                                    <th>Sconto</th>
-                                                    <th>Categoria</th>
-                                                    <th>Descrizione</th>
-                                                    <th>Produttore</th>
+                                                    <th>Numero</th>
+                                                    <th>Quantita Disponibile</th>
+                                                    <th>Scadenza</th>
+                                                    <th>Tipo di Prodotto</th>
+                                                    <th>Stalimimento</th>
                                                     <th>Opzioni</th>
                                                 </tr>
                                             </thead>
@@ -78,14 +77,13 @@
                                                 <[foreach]>
                                                 <tr class="odd gradeX">
                                                     <td><[id]></td>
-                                                    <td><[nome]></td>
-                                                    <td><[prezzo]></td>
-                                                    <td><[sconto]></td>
-                                                    <td><[categoria]> - <[nome_categoria]></td>
-                                                    <td><[descrizione]></td>
-                                                    <td><[id_produttore]> - <[nome_produttore]></td>
-                                                    <td class="center"><button value="modifica" onclick="location.href='modProdotto.php?id=<[id]>'">Modifica</button>
-                                                    <button value="elimina" onclick="location.href='deleteProdotto.php?id=<[id]>'">Elimina</button></td>
+                                                    <td><[numero]></td>
+                                                    <td><[quantita_disponibile]></td>
+                                                    <td><[scadenza]></td>
+                                                    <td><[id_prodotto]> - <[prodotto_nome]></td>
+                                                    <td><[id_stabilimento]></td>
+                                                    <td class="center"><button value="modifica" onclick="location.href='infoLotto.php?id=<[id]>'">Modifica</button>
+                                                        <button value="elimina" onclick="location.href='deleteLot.php?id=<[id]>'">Elimina</button></td>
                                                 </tr>
                                                 <[/foreach]>
                                             </tbody>

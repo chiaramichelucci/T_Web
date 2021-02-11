@@ -76,7 +76,7 @@
                 $this->setNome($coso['nome']);
                 $this->setPrezzo($coso['prezzo']);
                 $this->setSconto($coso['sconto']);
-                //$this->setIdCategoria($coso['id_categoria']);
+                $this->setIdCategoria($coso['categoria']);
                 $this->setDescrizione($coso['descrizione']);
                 $this->setIdProduttore($coso['id_produttore']);
             }

@@ -1,19 +1,31 @@
 <?php
 
-    require "../Data/user.php";
-    require "../PDO/database.php";
     require "../include/template2.inc.php";
+    require "../Data/produttore.php";
+    require "../PDO/database.php";
 
     session_start();
 	$checkSession = session_status();
     $error = new Template("../dashboard/pages/error.html");
 	if($checkSession == PHP_SESSION_ACTIVE){
 		if(isset($_SESSION['user_group']) && !empty($_SESSION['user_group']) && $_SESSION['user_group'] == 1){
-			$main = new Template("../dashboard/pages/index.html");
-            $nav = new Template("../dashboard/pages/navigation.html");
-            $nav->setContent("user_email", $_SESSION['user_email']);
-            $nav->setContent("user_email", $_SESSION['user_id']);
-            $main->setContent("navigation", $nav->get());
+			
+            $database = new Database();
+            $db = $database->getConnection();
+            $prod = new Produttore($db);
+            $prod->ragione_sociale = $_POST['rs_prod'];
+            $prod->partita_iva = $_POST['piva_prod'];
+            $prod->prefisso = $_POST['pref_prod'];
+            $prod->numero_verde = $_POST['nr_prod'];
+            $prod->email = $_POST['email_prod'];
+            $prod->sito = $_POST['sito_prod'];
+
+            $status = $prod->registerProduttore();
+            if(!$status){
+                $error->setContent("msgErrore", "Registrazione Falita");
+            }
+            header("Location: adminDashboard.php");
+            
 		} elseif(isset($_SESSION['user_group']) && !empty($_SESSION['user_group']) && $_SESSION['user_group'] == 2){
             $error->setContent("msgErrore", "Non hai permesso qui");
             $error->close();
@@ -26,6 +38,5 @@
         $error->close();
     }
 
-    $main->close();
 
 ?>

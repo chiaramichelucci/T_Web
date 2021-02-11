@@ -47,7 +47,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Lista Prodotti</h1>
+                            <h1 class="page-header">Lista Utenti</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -65,12 +65,12 @@
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Nome Prodotto</th>
-                                                    <th>Prezzo</th>
-                                                    <th>Sconto</th>
-                                                    <th>Categoria</th>
-                                                    <th>Descrizione</th>
-                                                    <th>Produttore</th>
+                                                    <th>Ragione Sociale</th>
+                                                    <th>Partita IVA</th>
+                                                    <th>Prefisso</th>
+                                                    <th>NR. Verde</th>
+                                                    <th>Email</th>
+                                                    <th>Sito</th>
                                                     <th>Opzioni</th>
                                                 </tr>
                                             </thead>
@@ -78,14 +78,14 @@
                                                 <[foreach]>
                                                 <tr class="odd gradeX">
                                                     <td><[id]></td>
-                                                    <td><[nome]></td>
-                                                    <td><[prezzo]></td>
-                                                    <td><[sconto]></td>
-                                                    <td><[categoria]> - <[nome_categoria]></td>
-                                                    <td><[descrizione]></td>
-                                                    <td><[id_produttore]> - <[nome_produttore]></td>
-                                                    <td class="center"><button value="modifica" onclick="location.href='modProdotto.php?id=<[id]>'">Modifica</button>
-                                                    <button value="elimina" onclick="location.href='deleteProdotto.php?id=<[id]>'">Elimina</button></td>
+                                                    <td><[ragione_sociale]></td>
+                                                    <td><[partita_iva]></td>
+                                                    <td><[prefisso]></td>
+                                                    <td><[numero_verde]></td>
+                                                    <td><[email]></td>
+                                                    <td><[sito]></td>
+                                                    <td class="center"><button value="modifica" onclick="location.href='infoUtente.php?id=<[id]>'">Modifica</button>
+                                                        <button value="elimina" onclick="location.href='deleteProducer.php?id=<[id]>'">Elimina</button></td>
                                                 </tr>
                                                 <[/foreach]>
                                             </tbody>

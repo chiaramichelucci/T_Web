@@ -59,7 +59,6 @@
             $stmt2 = $this->conn->prepare($query2);
             $stmt2->execute([$email]);
             $newid = $stmt2->fetch(PDO::FETCH_ASSOC);
-            print(" nuovo id e = " . $newid['id']);
             $query3 = "INSERT INTO users_has_groups (users_id, groups_id) VALUES (?, ?)";
             $stmt3 = $this->conn->prepare($query3);
             $stmt3->execute([$newid['id'], 2]);

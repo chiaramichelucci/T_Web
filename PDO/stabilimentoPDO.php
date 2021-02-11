@@ -12,8 +12,12 @@
         public function getAll(){
             $sql = "SELECT * FROM " . $this->table_name;
             $stmt = $this->conn->prepare( $sql );
-            $stmt->execute();
-            return $stmt;
+            if($stmt->execute()){
+                return $stmt;
+            }else{
+                return false;
+            }
+            
         }
     }
 
