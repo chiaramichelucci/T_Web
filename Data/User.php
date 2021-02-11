@@ -75,7 +75,6 @@
         }
 
         public function checkUser($email, $password){
-            print(" dentro check user ");
             $coso = parent::checkUser($email, $password);
             if($coso == false){
                 $this->setId(0);

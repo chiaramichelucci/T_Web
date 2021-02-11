@@ -20,7 +20,6 @@
         $user->checkUser($email, $password);
         //print($utente);
         //$user->checkUser("dragos@magnacad.it", "dragos");
-        print(" User id -> " . $user->id);
         if($user->id == 0){
             $failed = true;
             $error->setContent("msgErrore", "Username e password errate!");
