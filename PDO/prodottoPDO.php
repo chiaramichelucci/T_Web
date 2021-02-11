@@ -20,6 +20,18 @@
             }
         } 
 
+        public function getByCat($cat){
+            $sql = "SELECT * FROM " . $this->table_name . " WHERE categoria = ?";
+            $stmt = $this->conn->prepare( $sql );
+            //$stmt->bindValue(":cat", $cat, PDO::PARAM_INT);
+            if($stmt->execute([$cat])){
+                return $stmt;
+            } else {
+                return false;
+            }
+            
+        } 
+
         public function getProdotti(){
             $sql = "SELECT * FROM " . $this->table_name;
             $stmt = $this->conn->prepare($sql);
@@ -62,6 +74,16 @@
         public function getNProd($page, $limit){
             $sql = "SELECT * FROM " . $this->table_name . " ORDER BY id LIMIT :offset, :row ";
             $stmt = $this->conn->prepare( $sql );
+            $stmt->bindValue( ":offset", $page, PDO::PARAM_INT );
+            $stmt->bindValue( ":row", $limit, PDO::PARAM_INT );
+            $status = $stmt->execute();
+            return $stmt;
+        }
+
+        public function getNProdCat($page, $limit, $cat){
+            $sql = "SELECT * FROM " . $this->table_name . " WHERE categoria=:cat ORDER BY id LIMIT :offset, :row ";
+            $stmt = $this->conn->prepare( $sql );
+            $stmt->bindValue( ":cat", $cat, PDO::PARAM_INT );
             $stmt->bindValue( ":offset", $page, PDO::PARAM_INT );
             $stmt->bindValue( ":row", $limit, PDO::PARAM_INT );
             $status = $stmt->execute();
