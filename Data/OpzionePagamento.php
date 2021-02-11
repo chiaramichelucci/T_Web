@@ -4,6 +4,7 @@
     class OpzionePagamento extends OpzionePagamentoPDO{
 
         public $id;
+        public $tipologia;
         public $numero_carta;
         public $scadenza;
         public $cvv;
