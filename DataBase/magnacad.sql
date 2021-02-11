@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Creato il: Feb 11, 2021 alle 10:59
+-- Creato il: Feb 11, 2021 alle 18:55
 -- Versione del server: 10.4.10-MariaDB
 -- Versione PHP: 7.3.12
 
@@ -75,21 +75,21 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 --
 
 INSERT INTO `categoria` (`id`, `nome`) VALUES
-(1, 'Bevande Alcoliche'),
-(2, 'Bevande Analcoliche'),
-(3, 'Biscotti e Brioche'),
-(4, 'Caramelle'),
-(5, 'Cioccolata'),
-(6, 'Cura Personale'),
-(7, 'Latticini'),
-(8, 'Marmellate e Creme'),
+(1, 'bevande_alc'),
+(2, 'bevande_analc'),
+(3, 'biscotti'),
+(4, 'caramelle'),
+(5, 'cioccolata'),
+(6, 'cura'),
+(7, 'latticini'),
+(8, 'creme'),
 (9, 'Pasta'),
-(10, 'Per Neonati e Bambini'),
-(11, 'Prodotti per la casa'),
+(10, 'bambini'),
+(11, 'casa'),
 (12, 'Salse'),
-(13, 'Snacks'),
-(14, 'Sughi e Cibo in Scatola'),
-(15, 'Lieviti e altro per preparazioni');
+(13, 'snack'),
+(14, 'cibo_scat'),
+(15, 'lieviti');
 
 -- --------------------------------------------------------
 
