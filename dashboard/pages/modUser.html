@@ -47,50 +47,35 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Lista Utenti</h1>
+                            <h1 class="page-header">Promuovi Prodotto</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="panel panel-default">
-                                <div class="panel-heading">
-                                   Lista dei Prodotti
-                                </div>
-                                <!-- /.panel-heading -->
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Nome</th>
-                                                    <th>Cognome</th>
-                                                    <th>Email</th>
-                                                    <th>Data Nascita</th>
-                                                    <th>Grupo</th>
-                                                    <th>Opzioni</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <[foreach]>
-                                                <tr class="odd gradeX">
-                                                    <td><[id]></td>
-                                                    <td><[nome]></td>
-                                                    <td><[cognome]></td>
-                                                    <td><[email]></td>
-                                                    <td><[data_nascita]></td>
-                                                    <td><[id_gruppo]></td>
-                                                    <td class="center"><button value="modifica" onclick="location.href='modUtente.php?id=<[id]>'">Modifica</button></td>
-                                                </tr>
-                                                <[/foreach]>
-                                            </tbody>
-                                        </table>
+                                <form role="form" method="POST" action="modificaUtente.php">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Id Prodotto" name="id_user" id="id_user" value="<[id]>" readonly>
                                     </div>
-                                    <!-- /.table-responsive -->
-                                    
-                                </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Nome Prodotto" name="email_user" id="email_user" value="<[email]>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="disabledSelect">Gruppo</label>
+                                        <input class="form-control" id="disabledInput" type="text" placeholder="" value="<[id_group]> - <[name_group]>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Gruppo</label>
+                                        <select class="form-control" name="new_group" id="new_group" required>
+                                            <[foreach]>
+                                                <option><[group_id]> - <[group_nome]></option>
+                                            <[/foreach]>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-default" type="submit">Promuovi Prodotto</button>
+                                </form>
                                 <!-- /.panel-body -->
                             </div>
                             <!-- /.panel -->
@@ -117,18 +102,6 @@
 
         <!-- Custom Theme JavaScript -->
         <script src="../dashboard/js/startmin.js"></script>
-
-        <!-- DataTables JavaScript -->
-        <script src="../dashboard/js/dataTables/jquery.dataTables.min.js"></script>
-        <script src="../dashboard/js/dataTables/dataTables.bootstrap.min.js"></script>
-
-        <script>
-            $(document).ready(function() {
-                $('#dataTables-example').DataTable({
-                        responsive: true
-                });
-            });
-        </script>
 
     </body>
 </html>

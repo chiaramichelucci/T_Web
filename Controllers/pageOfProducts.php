@@ -3,6 +3,7 @@
 	require "../PDO/database.php";
 	require "../Data/immagine.php";
 	require "../Data/prodotto.php";
+	require "../Data/categoria.php";
 	require "../include/template2.inc.php";
 
 	session_start();
@@ -27,15 +28,21 @@
 
 	$limit      = ( isset( $_GET['limit'] ) ) ? $_GET['limit'] : 9;
     $page       = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
+	$cat       = ( isset( $_GET['cat'] ) ) ? $_GET['cat'] : 0;
 
 	$database = new Database();
     $db = $database->getConnection();
+	if($cat != 0){
+		$categoria = new Categoria($db);
+		$catIdRs = $categoria->getIdCat($cat);
+		$catId = $catIdRs->fetch(PDO::FETCH_ASSOC);
+	}
+
 	$prodotti = new Prodotto($db);
 	$s = $prodotti->getAll();
 	$total_results = $s->fetchColumn();
 	$total_pages = ceil($total_results/$limit);
-	$starting_limit = ($page-1)*$limit;   
-	print("start->" . $starting_limit);         
+	$starting_limit = ($page-1)*$limit;           
 	$stmt = $prodotti->getNProd($starting_limit, $limit);
 	$num = $stmt->rowCount();
 	$images = new Immagine($db);

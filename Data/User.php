@@ -61,7 +61,6 @@
         }
 
         public function getUser($id){
-            print(" dentro get user ");
             $coso = parent::getUser($id);
             if($coso == false){
                 $this->setId(0);
