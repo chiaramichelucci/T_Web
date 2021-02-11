@@ -40,7 +40,6 @@
             $stmt->execute([$id_prod]);
             return $stmt;
         }
-
         
         public function aggiornaQtaDisp($nuova_qta){
             $sql = "UPDATE " . $this->table_name . " SET quantita_disponibile = ? WHERE id = " . $this->id;

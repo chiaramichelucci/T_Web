@@ -64,7 +64,7 @@
     if($status){
         header("Location: ../Controllers/userProfile.php");
     }else{
-        $msg = "Modifica falita";
+        $msg = "Modifica fallita";
         $error->setContent("msgError", $msg);
         $error->close();
     }
