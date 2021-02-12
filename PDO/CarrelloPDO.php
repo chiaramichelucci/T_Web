@@ -31,7 +31,7 @@
         }
 
         public function viewCart($id_user){
-            $query = "SELECT * FROM " . $this->table_name . " WHERE id_user = ?";
+            $sql = "SELECT * FROM " . $this->table_name . " WHERE id_user = ?";
             $stmt = $this->conn->prepare( $sql );
             $stmt->execute([$id_user]);
             return $stmt;
@@ -45,7 +45,7 @@
         }
         
         public function aggiungiAlCarrello(){
-            $query = "INSERT INTO " . $this->table_name . " (id_prodotto, quantita, id_user)
+            $sql = "INSERT INTO " . $this->table_name . " (id_prodotto, quantita, id_user)
             VALUES (?, ?, ?)";
             $stmt = $this->conn->prepare( $sql );
             $stmt->execute(array($this->id_prodotto, $this->quantita, $this->id_user));

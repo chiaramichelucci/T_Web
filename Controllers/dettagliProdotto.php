@@ -49,6 +49,7 @@
         $error->setContent("msgErrore", "Nessuno prodotto con quello id");
         $error->close();
     }else{
+        $main->setContent("id_prodotto", $prod->id);
         $main->setContent("nome", $prod->nome);
         $main->setContent("prezzo", $prod->prezzo);
         $main->setContent("descrizione", $prod->descrizione);

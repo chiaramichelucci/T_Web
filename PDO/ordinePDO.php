@@ -9,8 +9,8 @@
             $this->conn = $db;
         }
 
-        public function getOrdine($userId){​​
-            $sql = "SELECT * FROM " . $this->table_name . " WHERE id_user = ?";
+        public function getOrdine($userId){
+            $sql = " SELECT * FROM " . $this->table_name . " WHERE id_user = ?";
             $stmt = $this->conn->prepare( $sql );
             $stmt->execute([$userId]);
             return $stmt;
